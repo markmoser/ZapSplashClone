@@ -1,29 +1,29 @@
 {
-    "name": "New Controls",
+    "name": "PlayerControls",
     "maps": [
         {
-            "name": "PlayerMovement",
-            "id": "b48b7267-c8a6-4ad5-a32d-36c853bad912",
+            "name": "PlayerActions",
+            "id": "7ab850fa-1e8d-4072-bcad-cc64fd0b54d7",
             "actions": [
                 {
-                    "name": "New action",
-                    "type": "Button",
-                    "id": "29f17322-732a-49a4-bfb5-7584bcd44abb",
-                    "expectedControlType": "Button",
+                    "name": "Move",
+                    "type": "Value",
+                    "id": "38f7521c-60ab-41cf-bb22-fdf53cf62d97",
+                    "expectedControlType": "Stick",
                     "processors": "",
                     "interactions": "",
-                    "initialStateCheck": false
+                    "initialStateCheck": true
                 }
             ],
             "bindings": [
                 {
                     "name": "",
-                    "id": "f073c0cd-b39c-484f-bdd6-d05944bddfb5",
-                    "path": "",
+                    "id": "f3f5bdce-252b-487d-a8a0-efd49fe11f77",
+                    "path": "<XInputController>/leftStick",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "New action",
+                    "action": "Move",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
