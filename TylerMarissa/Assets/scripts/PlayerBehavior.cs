@@ -1,38 +1,43 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class PlayerBehavior : MonoBehaviour
 {
-    PlayerControls controls;
+    float movementSpeed = 5f;
 
-    //stored data from input
+    InputActionAsset inputAsset;
+    InputActionMap inputMap;
+    InputAction move;
+
     Vector2 movement;
 
     void Awake()
     {
-        controls = new PlayerControls();
-        
-        //moves player when stick is used, cancels movement when not
-        controls.PlayerActions.Move.performed += ctx => movement = ctx.ReadValue<Vector2>();
-        controls.PlayerActions.Move.canceled += ctx => movement = Vector2.zero; //(0,0)
+        inputAsset = this.GetComponent<PlayerInput>().actions;
+        inputMap = inputAsset.FindActionMap("PlayerActions");
+        move = inputMap.FindAction("Move");
+
+        move.performed += ctx => movement = ctx.ReadValue<Vector2>();
+        move.canceled += ctx => movement = Vector2.zero; //(0,0)
     }
 
     void FixedUpdate()
     {
         //moves player by getting "movement" from input controls
-        Vector2 movementVelocity = new Vector2(movement.x, movement.y) * 5f * Time.deltaTime;
-        transform.Translate(movementVelocity, Space.World);
+        Vector2 movementVelocity = new Vector2(movement.x, movement.y) * movementSpeed * Time.deltaTime;
+        transform.Translate(movementVelocity, Space.Self);
     }
 
 
     void OnEnable()
     {
-        controls.PlayerActions.Enable();
+        inputMap.Enable();
     }
 
     void OnDisable()
     {
-        controls.PlayerActions.Disable();
+        inputMap.Disable();
     }
 }

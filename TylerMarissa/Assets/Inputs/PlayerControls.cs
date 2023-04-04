@@ -50,6 +50,94 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": false
                 }
             ]
+        },
+        {
+            ""name"": ""Keyboard"",
+            ""id"": ""3897bf1d-f3a7-4942-8d6c-f0463fb75dc5"",
+            ""actions"": [
+                {
+                    ""name"": ""Left"",
+                    ""type"": ""Button"",
+                    ""id"": ""ac9f7efb-b535-4106-9c7a-d02bfad1839e"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Right"",
+                    ""type"": ""Button"",
+                    ""id"": ""0a517623-c2fe-4f7b-902e-fda5c540c9e5"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Up"",
+                    ""type"": ""Button"",
+                    ""id"": ""95581b26-babe-41bc-8009-77a00bf085d9"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Down"",
+                    ""type"": ""Button"",
+                    ""id"": ""7e9c14e4-1f87-4a51-8612-2c48418796c6"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""9ea9927b-ad72-461c-9d37-8ac1d37c2288"",
+                    ""path"": ""<Keyboard>/a"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Left"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""cfecde70-84b5-4fdb-a064-2b81aa454e55"",
+                    ""path"": ""<Keyboard>/d"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Right"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""a2dd59ee-71a5-405f-bb54-32886d72a6f2"",
+                    ""path"": ""<Keyboard>/w"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Up"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""c8a26dca-2773-49ed-b1b4-cd3884f17a39"",
+                    ""path"": ""<Keyboard>/s"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Down"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
         }
     ],
     ""controlSchemes"": []
@@ -57,6 +145,12 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         // PlayerActions
         m_PlayerActions = asset.FindActionMap("PlayerActions", throwIfNotFound: true);
         m_PlayerActions_Move = m_PlayerActions.FindAction("Move", throwIfNotFound: true);
+        // Keyboard
+        m_Keyboard = asset.FindActionMap("Keyboard", throwIfNotFound: true);
+        m_Keyboard_Left = m_Keyboard.FindAction("Left", throwIfNotFound: true);
+        m_Keyboard_Right = m_Keyboard.FindAction("Right", throwIfNotFound: true);
+        m_Keyboard_Up = m_Keyboard.FindAction("Up", throwIfNotFound: true);
+        m_Keyboard_Down = m_Keyboard.FindAction("Down", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -145,8 +239,72 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         }
     }
     public PlayerActionsActions @PlayerActions => new PlayerActionsActions(this);
+
+    // Keyboard
+    private readonly InputActionMap m_Keyboard;
+    private IKeyboardActions m_KeyboardActionsCallbackInterface;
+    private readonly InputAction m_Keyboard_Left;
+    private readonly InputAction m_Keyboard_Right;
+    private readonly InputAction m_Keyboard_Up;
+    private readonly InputAction m_Keyboard_Down;
+    public struct KeyboardActions
+    {
+        private @PlayerControls m_Wrapper;
+        public KeyboardActions(@PlayerControls wrapper) { m_Wrapper = wrapper; }
+        public InputAction @Left => m_Wrapper.m_Keyboard_Left;
+        public InputAction @Right => m_Wrapper.m_Keyboard_Right;
+        public InputAction @Up => m_Wrapper.m_Keyboard_Up;
+        public InputAction @Down => m_Wrapper.m_Keyboard_Down;
+        public InputActionMap Get() { return m_Wrapper.m_Keyboard; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(KeyboardActions set) { return set.Get(); }
+        public void SetCallbacks(IKeyboardActions instance)
+        {
+            if (m_Wrapper.m_KeyboardActionsCallbackInterface != null)
+            {
+                @Left.started -= m_Wrapper.m_KeyboardActionsCallbackInterface.OnLeft;
+                @Left.performed -= m_Wrapper.m_KeyboardActionsCallbackInterface.OnLeft;
+                @Left.canceled -= m_Wrapper.m_KeyboardActionsCallbackInterface.OnLeft;
+                @Right.started -= m_Wrapper.m_KeyboardActionsCallbackInterface.OnRight;
+                @Right.performed -= m_Wrapper.m_KeyboardActionsCallbackInterface.OnRight;
+                @Right.canceled -= m_Wrapper.m_KeyboardActionsCallbackInterface.OnRight;
+                @Up.started -= m_Wrapper.m_KeyboardActionsCallbackInterface.OnUp;
+                @Up.performed -= m_Wrapper.m_KeyboardActionsCallbackInterface.OnUp;
+                @Up.canceled -= m_Wrapper.m_KeyboardActionsCallbackInterface.OnUp;
+                @Down.started -= m_Wrapper.m_KeyboardActionsCallbackInterface.OnDown;
+                @Down.performed -= m_Wrapper.m_KeyboardActionsCallbackInterface.OnDown;
+                @Down.canceled -= m_Wrapper.m_KeyboardActionsCallbackInterface.OnDown;
+            }
+            m_Wrapper.m_KeyboardActionsCallbackInterface = instance;
+            if (instance != null)
+            {
+                @Left.started += instance.OnLeft;
+                @Left.performed += instance.OnLeft;
+                @Left.canceled += instance.OnLeft;
+                @Right.started += instance.OnRight;
+                @Right.performed += instance.OnRight;
+                @Right.canceled += instance.OnRight;
+                @Up.started += instance.OnUp;
+                @Up.performed += instance.OnUp;
+                @Up.canceled += instance.OnUp;
+                @Down.started += instance.OnDown;
+                @Down.performed += instance.OnDown;
+                @Down.canceled += instance.OnDown;
+            }
+        }
+    }
+    public KeyboardActions @Keyboard => new KeyboardActions(this);
     public interface IPlayerActionsActions
     {
         void OnMove(InputAction.CallbackContext context);
+    }
+    public interface IKeyboardActions
+    {
+        void OnLeft(InputAction.CallbackContext context);
+        void OnRight(InputAction.CallbackContext context);
+        void OnUp(InputAction.CallbackContext context);
+        void OnDown(InputAction.CallbackContext context);
     }
 }
