@@ -6,12 +6,18 @@ using UnityEngine.InputSystem;
 public class PlayerBehavior : MonoBehaviour
 {
     float movementSpeed = 5f;
+    Vector2 movement;
 
     InputActionAsset inputAsset;
     InputActionMap inputMap;
     InputAction move;
 
-    Vector2 movement;
+    public bool stunned;
+
+    private void Start()
+    {
+        stunned = false;
+    }
 
     void Awake()
     {
@@ -24,9 +30,11 @@ public class PlayerBehavior : MonoBehaviour
     }
     void FixedUpdate()
     {
-        //moves player by getting "movement" from input controls
-        Vector2 movementVelocity = new Vector2(movement.x, movement.y) * movementSpeed * Time.deltaTime;
-        transform.Translate(movementVelocity, Space.Self);
+        if(!stunned)
+        {
+            Vector2 movementVelocity = new Vector2(movement.x, movement.y) * movementSpeed * Time.deltaTime;
+            transform.Translate(movementVelocity, Space.Self);
+        }
     }
     void OnEnable()
     {
