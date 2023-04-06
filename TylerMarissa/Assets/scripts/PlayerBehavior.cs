@@ -22,15 +22,12 @@ public class PlayerBehavior : MonoBehaviour
         move.performed += ctx => movement = ctx.ReadValue<Vector2>();
         move.canceled += ctx => movement = Vector2.zero; //(0,0)
     }
-
     void FixedUpdate()
     {
         //moves player by getting "movement" from input controls
         Vector2 movementVelocity = new Vector2(movement.x, movement.y) * movementSpeed * Time.deltaTime;
         transform.Translate(movementVelocity, Space.Self);
     }
-
-
     void OnEnable()
     {
         inputMap.Enable();
