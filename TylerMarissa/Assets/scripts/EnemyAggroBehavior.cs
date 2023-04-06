@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class EnemyAggroBehavior : MonoBehaviour
 {
-    public Vector3 EnemyTarget;
+    public GameObject EnemyTarget;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -12,7 +12,10 @@ public class EnemyAggroBehavior : MonoBehaviour
         if (collision.gameObject.CompareTag("Player"))          //and if routine is not already running !!
         {
             print("Start EnemyShooting Coroutine");
-            collision.gameObject.transform.position = EnemyTarget;
+
+            EnemyTarget = collision.gameObject;
+            print(EnemyTarget);
+
             StartCoroutine(transform.parent.GetComponent<EnemyBehavior>().EnemyShooting());
         }
   
