@@ -12,7 +12,7 @@ public class EnemyAggroBehavior : MonoBehaviour
         if (collision.gameObject.CompareTag("Player"))          //and if routine is not already running !!
         {
             print("Start EnemyShooting Coroutine");
-            collision.gameObject.transform.position = EnemyTarget;
+           // collision.gameObject.transform.position = EnemyTarget;
             StartCoroutine(transform.parent.GetComponent<EnemyBehavior>().EnemyShooting());
         }
   
