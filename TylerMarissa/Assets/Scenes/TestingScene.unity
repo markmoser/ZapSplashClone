@@ -8173,10 +8173,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3a9cf51dfa085de4ebbdc13846ea8918, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rateOfFire: 3
+  rateOfFire: 0.05
   accuracy: 0
-  speedOfAmmo: 0
-  EnemyAmmo: {fileID: 239820599237924492, guid: b6a0a77e03b12fa4285ee806d4f06635, type: 3}
+  SpeedOfAmmo: 0
+  EnemyAmmo: {fileID: 2336550799899013434, guid: b6a0a77e03b12fa4285ee806d4f06635, type: 3}
 --- !u!212 &1588353660
 SpriteRenderer:
   m_ObjectHideFlags: 0

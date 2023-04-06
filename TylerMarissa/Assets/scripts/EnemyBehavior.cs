@@ -6,7 +6,7 @@ public class EnemyBehavior : MonoBehaviour
 {
     [SerializeField] private float rateOfFire;
     [SerializeField] private float accuracy;
-    public float speedOfAmmo;
+    public float SpeedOfAmmo;
 
     public GameObject EnemyAmmo;
 
@@ -15,7 +15,6 @@ public class EnemyBehavior : MonoBehaviour
     public IEnumerator EnemyShooting()
     {
         Instantiate(EnemyAmmo, gameObject.transform.position, Quaternion.identity, gameObject.transform);
-        
         
         yield return new WaitForSeconds(rateOfFire);
     }

@@ -4,16 +4,19 @@ using UnityEngine;
 
 public class AmmoBehavior : MonoBehaviour
 {
-    //ammo movement
-    private void Update()
-    {
-        //transform.position = Vector3.MoveTowards(transform.position, transform.GetComponent<EnemyAggroBehavior>().EnemyTarget, transform.parent.GetComponent<EnemyBehavior>().speedOfAmmo);
-        //transform.position = Vector3.MoveTowards(transform.position, new Vector3(5,5,0), 5f);
-    }
+    private EnemyAggroBehavior enemyAggro;
+    private EnemyBehavior enemy;
 
     private void Awake()
     {
-        gameObject.GetComponent<Rigidbody2D>().AddForce(transform.parent.GetComponentsInChildren<EnemyAggroBehavior>().EnemyTarget.transform.position * 1f);
+        enemyAggro = this.gameObject.transform.parent.GetComponentInChildren<EnemyAggroBehavior>();
+        enemy = this.gameObject.transform.parent.GetComponent<EnemyBehavior>();
+    }
+
+    private void Update()
+    {
+        //transform.position = Vector3.MoveTowards(transform.position, enemyAggro.EnemyTarget, 0.05f);
+        gameObject.GetComponent<Rigidbody2D>().AddForce(enemyAggro.EnemyTarget * 5f);
     }
 
     //what happens when ammo hits something
@@ -22,8 +25,8 @@ public class AmmoBehavior : MonoBehaviour
         if(collision.gameObject.CompareTag("Player"))
         {
             collision.gameObject.GetComponent<PlayerBehavior>().stunned = true;
-            Destroy(this);
+            Destroy(gameObject);
         }
-        
+        Destroy(gameObject);
     }
 }
