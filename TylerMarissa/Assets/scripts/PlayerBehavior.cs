@@ -26,7 +26,6 @@ public class PlayerBehavior : MonoBehaviour
         inputMap = inputAsset.FindActionMap("PlayerActions");
         move = inputMap.FindAction("Move");
         interact = inputMap.FindAction("Interact");
-
         //sets the movement velocity for the players
         move.performed += ctx => movement = ctx.ReadValue<Vector2>();
         move.canceled += ctx => movement = Vector2.zero; //(0,0)
