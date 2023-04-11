@@ -15,8 +15,8 @@ public class AmmoBehavior : MonoBehaviour
 
     private void Update()
     {
-        //transform.position = Vector3.MoveTowards(transform.position, enemyAggro.EnemyTarget, 0.05f);
-        gameObject.GetComponent<Rigidbody2D>().AddForce(enemyAggro.EnemyTarget * 5f);
+        //transform.position = Vector3.MoveTowards(transform.position, (enemyAggro.EnemyTarget - transform.position).normalized * 5f, enemy.SpeedOfAmmo);
+        //gameObject.GetComponent<Rigidbody2D>().AddForce((enemyAggro.EnemyTarget - transform.position).normalized * 5f);
     }
 
     //what happens when ammo hits something
@@ -27,6 +27,6 @@ public class AmmoBehavior : MonoBehaviour
             collision.gameObject.GetComponent<PlayerBehavior>().stunned = true;
             Destroy(gameObject);
         }
-        Destroy(gameObject);
+        //Destroy(gameObject);
     }
 }
