@@ -6,28 +6,39 @@ public class EnemyAggroBehavior : MonoBehaviour
 {
     public Vector3 EnemyTarget;
     private EnemyBehavior enemy;
-
+    public GameObject Player;
 
     private void Awake()
     {
         enemy = this.gameObject.transform.parent.GetComponent<EnemyBehavior>();
     }
 
-    private void OnTriggerStay2D(Collider2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
         //when the player enters the range of the enemy
         if (collision.gameObject.CompareTag("Player"))          //and if routine is not already running !!
         {
-            EnemyTarget = collision.gameObject.transform.position;
-            print(EnemyTarget);
-            StartCoroutine(transform.parent.GetComponent<EnemyBehavior>().EnemyShooting());
+            enemy.EnemyIsShooting = true;
+            Player = collision.gameObject;
+            StartCoroutine(transform.parent.GetComponent<EnemyBehavior>().Laser());
         }
-  
+
+    }
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        //when the player is in range the range of the enemy
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            EnemyTarget = collision.gameObject.transform.position;
+            
+            enemy.EnemyIsShooting = true;
+        }
+
     }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        StopCoroutine(transform.parent.GetComponent<EnemyBehavior>().EnemyShooting());
+        StopCoroutine(transform.parent.GetComponent<EnemyBehavior>().Laser());
         enemy.EnemyIsShooting = false;
     }
 }

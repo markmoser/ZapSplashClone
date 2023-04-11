@@ -9266,12 +9266,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3a9cf51dfa085de4ebbdc13846ea8918, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rateOfFire: 5
+  rateOfFire: 3
   accuracy: 0
   ammoRange: 0
   SpeedOfAmmo: 5
   EnemyAmmo: {fileID: 2336550799899013434, guid: b6a0a77e03b12fa4285ee806d4f06635, type: 3}
   EnemyIsShooting: 0
+  lineRend: {fileID: 1588353663}
 --- !u!212 &1588353660
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -9376,7 +9377,7 @@ LineRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 0}
+  - {fileID: 2100000, guid: fd7aa0324ca8e6346bd86e1bd63870aa, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -9398,7 +9399,7 @@ LineRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Positions:
-  - {x: 0, y: 2, z: 0}
+  - {x: 0, y: 0, z: 0}
   - {x: 0, y: 0, z: 0}
   m_Parameters:
     serializedVersion: 3
@@ -9407,8 +9408,8 @@ LineRenderer:
       serializedVersion: 2
       m_Curve:
       - serializedVersion: 3
-        time: 0
-        value: 1
+        time: 0.06410217
+        value: 0.18382072
         inSlope: 0
         outSlope: 0
         tangentMode: 0

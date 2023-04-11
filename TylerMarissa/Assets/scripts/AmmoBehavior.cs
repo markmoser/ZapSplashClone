@@ -15,7 +15,7 @@ public class AmmoBehavior : MonoBehaviour
 
     private void Update()
     {
-        transform.position = Vector3.MoveTowards(transform.position, (enemyAggro.EnemyTarget - transform.position).normalized * 5f, enemy.SpeedOfAmmo);
+        //transform.position = Vector3.MoveTowards(transform.position, (enemyAggro.EnemyTarget - transform.position).normalized * 5f, enemy.SpeedOfAmmo);
         //gameObject.GetComponent<Rigidbody2D>().AddForce((enemyAggro.EnemyTarget - transform.position).normalized * 5f);
     }
 
