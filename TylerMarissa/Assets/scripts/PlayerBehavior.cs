@@ -6,12 +6,12 @@ using UnityEngine.InputSystem;
 
 public class PlayerBehavior : MonoBehaviour
 {
-    float movementSpeed = 5f;
-    Vector2 movement;
-
-    InputActionAsset inputAsset;
-    InputActionMap inputMap;
-    InputAction move,interact;
+    private float movementSpeed = 5f;
+    private Vector2 movement;
+    private DoorBehavior doorScript;
+    private InputActionAsset inputAsset;
+    private InputActionMap inputMap;
+    private InputAction move,interact;
     private bool inDoorRange;
     public bool stunned;
 
@@ -29,16 +29,21 @@ public class PlayerBehavior : MonoBehaviour
         //sets the movement velocity for the players
         move.performed += ctx => movement = ctx.ReadValue<Vector2>();
         move.canceled += ctx => movement = Vector2.zero; //(0,0)
-
-        interact.performed += ctx => EnterDoor();
+        //allows you to interact with objects you are in rage of
+        interact.performed += ctx => Interact();
 
     }
-    private void EnterDoor()
+
+    public void MovePlayer(Vector2 targetLoc)
     {
-        
+        transform.position = targetLoc;
+    }
+    public void Interact()
+    {
         if (inDoorRange) {
             print(inDoorRange);
-            transform.position = new Vector2(-7, 0);
+            doorScript.GoThroughDoor(gameObject);
+            //transform.position = new Vector2(-7, 0);
         }
     }
     void FixedUpdate()
@@ -54,6 +59,7 @@ public class PlayerBehavior : MonoBehaviour
         if (collision.gameObject.tag == "Door")
         {
             inDoorRange = true;
+            doorScript = collision.gameObject.GetComponent<DoorBehavior>();
         }
     }
     private void OnTriggerExit2D(Collider2D collision)
