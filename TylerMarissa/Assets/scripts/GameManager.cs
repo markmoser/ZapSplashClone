@@ -2,13 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
     public GameObject ElePlayer;
     public GameObject WaterPlayer;
     //public PlayerInputManager pIM;
-
+    [SerializeField] private GameObject buttonText;
     private int buttonsPressed = 0;
     private int enemiesKilled = 0;
     private int prisonersFreed = 0;
@@ -20,6 +21,8 @@ public class GameManager : MonoBehaviour
     public void countButton()
     {
         buttonsPressed++;
+        Text temp = buttonText.GetComponent<Text>();
+        temp.text = "Buttons : " + buttonsPressed + "/4";
     }
     public void countPrisoner()
     {
