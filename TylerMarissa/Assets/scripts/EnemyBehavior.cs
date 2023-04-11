@@ -31,7 +31,7 @@ public class EnemyBehavior : MonoBehaviour
             LineRend.enabled = true;
             LineRend.SetPosition(0, transform.position);
             LineRend.SetPosition(1, LaserAim);
-            Debug.Log("Aim");
+            //Debug.Log("Aim");
 
             Invoke("EnemyShooting", 1);
             //laser power up sound
@@ -46,10 +46,10 @@ public class EnemyBehavior : MonoBehaviour
 
         RaycastHit2D hit = Physics2D.Raycast(transform.position, LaserAim, enemyRange, layersToHit);
         //Debug.DrawRay(transform.position, LaserAim, Color.black, 10f);
-        Debug.Log(hit.collider.gameObject.name);
+        //Debug.Log(hit.collider.gameObject.name);
         if (hit) //.collider.gameObject.CompareTag("Player"))
         {
-            Debug.Log("hit");
+            //Debug.Log("hit");
             enemyAggro.Player.GetComponent<PlayerBehavior>().stunned = true;
 
             EnemyIsShooting = false;
