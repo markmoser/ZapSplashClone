@@ -40,5 +40,6 @@ public class EnemyAggroBehavior : MonoBehaviour
     {
         StopCoroutine(transform.parent.GetComponent<EnemyBehavior>().Laser());
         enemy.EnemyIsShooting = false;
+        enemy.LineRend.enabled = false;
     }
 }

@@ -14,7 +14,8 @@ public class EnemyBehavior : MonoBehaviour
     public bool EnemyIsShooting = false;
 
     private Vector3 LaserAim;
-    [SerializeField] LineRenderer lineRend;
+    public LineRenderer LineRend;
+    [SerializeField] LayerMask layersToHit;
 
 
     private void Awake()
@@ -27,9 +28,9 @@ public class EnemyBehavior : MonoBehaviour
         while(EnemyIsShooting)
         {
             LaserAim = enemyAggro.EnemyTarget;
-            lineRend.enabled = true;
-            lineRend.SetPosition(0, transform.position);
-            lineRend.SetPosition(1, LaserAim);
+            LineRend.enabled = true;
+            LineRend.SetPosition(0, transform.position);
+            LineRend.SetPosition(1, LaserAim);
             Debug.Log("Aim");
 
             Invoke("EnemyShooting", 1);
@@ -41,15 +42,17 @@ public class EnemyBehavior : MonoBehaviour
 
     private void EnemyShooting()
     {
-        Debug.Log("enemy shooting");
+        LineRend.enabled = false;
 
-        RaycastHit2D raycast = Physics2D.Raycast(transform.position, LaserAim, enemyRange);
-        if (raycast && enemyAggro.Player.transform.CompareTag("Player"))
+        RaycastHit2D hit = Physics2D.Raycast(transform.position, LaserAim, enemyRange, layersToHit);
+        //Debug.DrawRay(transform.position, LaserAim, Color.black, 10f);
+        Debug.Log(hit.collider.gameObject.name);
+        if (hit) //.collider.gameObject.CompareTag("Player"))
         {
             Debug.Log("hit");
             enemyAggro.Player.GetComponent<PlayerBehavior>().stunned = true;
-            lineRend.enabled = false;
-            StopCoroutine("Laser");
+
+            EnemyIsShooting = false;
         }
     }
 }
