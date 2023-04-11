@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 8371807251257536525}
   - component: {fileID: 8371807251257536524}
   - component: {fileID: 8371807251257536513}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: ElectricPlayer
   m_TagString: Player
   m_Icon: {fileID: 0}
