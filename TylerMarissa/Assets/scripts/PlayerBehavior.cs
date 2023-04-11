@@ -6,7 +6,7 @@ using UnityEngine.InputSystem;
 
 public class PlayerBehavior : MonoBehaviour
 {
-    private float movementSpeed = 15f;
+    private float movementSpeed = 5f;
     private Vector2 movement;
     private DoorBehavior doorScript;
     private ButtonBehavior buttonScript;
