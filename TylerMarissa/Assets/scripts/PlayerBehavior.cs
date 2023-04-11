@@ -6,18 +6,20 @@ using UnityEngine.InputSystem;
 
 public class PlayerBehavior : MonoBehaviour
 {
-    private float movementSpeed = 5f;
+    private float movementSpeed = 15f;
     private Vector2 movement;
     private DoorBehavior doorScript;
+    private ButtonBehavior buttonScript;
     private InputActionAsset inputAsset;
     private InputActionMap inputMap;
     private InputAction move,interact;
-    private bool inDoorRange;
+    private bool inDoorRange, touchingButton;
     public bool stunned;
 
     private void Start()
     {
         inDoorRange = false;
+        touchingButton = false;
         stunned = false;
     }
     void Awake()
@@ -41,9 +43,11 @@ public class PlayerBehavior : MonoBehaviour
     public void Interact()
     {
         if (inDoorRange) {
-            print(inDoorRange);
             doorScript.GoThroughDoor(gameObject);
-            //transform.position = new Vector2(-7, 0);
+        }
+        if (touchingButton)
+        {
+            buttonScript.PressButton();
         }
     }
     void FixedUpdate()
@@ -61,12 +65,21 @@ public class PlayerBehavior : MonoBehaviour
             inDoorRange = true;
             doorScript = collision.gameObject.GetComponent<DoorBehavior>();
         }
+        if (collision.gameObject.tag == "Button")
+        {
+            touchingButton = true;
+            buttonScript = collision.gameObject.GetComponent<ButtonBehavior>();
+        }
     }
     private void OnTriggerExit2D(Collider2D collision)
     {
         if (collision.gameObject.tag == "Door")
         {
             inDoorRange = false;
+        }
+        if (collision.gameObject.tag == "Button")
+        {
+            touchingButton = false;
         }
     }
     void OnEnable()
