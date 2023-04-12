@@ -23519,7 +23519,7 @@ GameObject:
   - component: {fileID: 1588353663}
   m_Layer: 0
   m_Name: Enemy
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -23544,6 +23544,8 @@ MonoBehaviour:
   layersToHit:
     serializedVersion: 2
     m_Bits: 0
+  HitByEle: 0
+  HitByWater: 0
 --- !u!212 &1588353660
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -24482,7 +24484,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ElePlayer: {fileID: 8371807251257536527, guid: 34bbec7355ee9ba46b2e97da2daef860, type: 3}
-  WaterPlayer: {fileID: 0}
+  WaterPlayer: {fileID: 3207062486373988298, guid: dadf98177e679bc4ab52f3caa43c9107, type: 3}
 --- !u!1 &1915626746
 GameObject:
   m_ObjectHideFlags: 0

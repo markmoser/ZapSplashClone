@@ -4,29 +4,35 @@ using UnityEngine;
 
 public class AmmoBehavior : MonoBehaviour
 {
-    private EnemyAggroBehavior enemyAggro;
-    private EnemyBehavior enemy;
+    private PlayerBehavior playerScript;
 
     private void Awake()
     {
-        enemyAggro = this.gameObject.transform.parent.GetComponentInChildren<EnemyAggroBehavior>();
-        enemy = this.gameObject.transform.parent.GetComponent<EnemyBehavior>();
+        playerScript = this.gameObject.transform.parent.GetComponent<PlayerBehavior>();
     }
 
     private void Update()
     {
-        //transform.position = Vector3.MoveTowards(transform.position, enemyAggro.EnemyTarget, 0.05f);
-        gameObject.GetComponent<Rigidbody2D>().AddForce(enemyAggro.EnemyTarget * 5f);
+        transform.Translate(Vector3.up * playerScript.ammoSpeed * Time.deltaTime);
+        //destroy gameObject after time
     }
 
     //what happens when ammo hits something
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if(collision.gameObject.CompareTag("Player"))
+        if(collision.gameObject.CompareTag("Enemy"))
         {
-            collision.gameObject.GetComponent<PlayerBehavior>().stunned = true;
+            //if the ammo is from the ele player
+            if (playerScript.IsElePlayer)
+            {
+                collision.gameObject.GetComponent<EnemyBehavior>().HitByEle = true;
+            }
+            //if the player is hit by the water player
+            if (!playerScript.IsElePlayer)
+            {
+                collision.gameObject.GetComponent<EnemyBehavior>().HitByWater = true;
+            }
             Destroy(gameObject);
         }
-        Destroy(gameObject);
     }
 }

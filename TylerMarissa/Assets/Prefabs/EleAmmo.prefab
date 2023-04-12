@@ -11,10 +11,10 @@ GameObject:
   - component: {fileID: 2336550799899013431}
   - component: {fileID: 2336550799899013432}
   - component: {fileID: 1364938895617909275}
-  - component: {fileID: 4121130624317315340}
   - component: {fileID: 8860321837423340557}
-  m_Layer: 0
-  m_Name: EnemyAmmo
+  - component: {fileID: -5183166996240720880}
+  m_Layer: 7
+  m_Name: EleAmmo
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -28,8 +28,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2336550799899013434}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.7110108, y: -0.13093, z: 0}
-  m_LocalScale: {x: 0.14, y: 0.14, z: 0.14}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.15, y: 0.15, z: 0}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
@@ -103,18 +103,6 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.5
---- !u!114 &4121130624317315340
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2336550799899013434}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b3374bf6fb98c7648af5c58550fac8da, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!50 &8860321837423340557
 Rigidbody2D:
   serializedVersion: 4
@@ -136,3 +124,16 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &-5183166996240720880
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2336550799899013434}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b47b8240d811c964ca09449a1880fc46, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ammoSpeed: 5
