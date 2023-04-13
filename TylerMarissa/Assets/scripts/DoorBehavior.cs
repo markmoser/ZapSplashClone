@@ -1,11 +1,10 @@
 /**********************************************************************************
 
-// File Name :         Assignment2.cs
-// Author :            Marissa Moser
-// Creation Date :     January 31, 2023
+// File Name :         DoorBehavior.cs
+// Author :            Tyler Bouchard
+// Creation Date :     April 13, 2023
 //
-// Brief Description : Code for Assignment2, reversing an integer using modulos and
-                          converting a distance from miles to kilometers.
+// Brief Description : mves the players when they go through the doors
 
 **********************************************************************************/
 
