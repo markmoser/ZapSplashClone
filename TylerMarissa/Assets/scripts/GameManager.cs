@@ -15,7 +15,7 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         PlayerInput.Instantiate(ElePlayer, 0, null, pairWithDevice: Gamepad.all[0]);
-        PlayerInput.Instantiate(WaterPlayer, 1, null, pairWithDevice: Gamepad.all[1]);
+        //PlayerInput.Instantiate(WaterPlayer, 1, null, pairWithDevice: Gamepad.all[1]);
     }
     public void CountButton()
     {
