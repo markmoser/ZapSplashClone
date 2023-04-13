@@ -1,11 +1,11 @@
 /**********************************************************************************
 
-// File Name :         Assignment2.cs
+// File Name :         WaterAmmoBehavior.cs
 // Author :            Marissa Moser
-// Creation Date :     January 31, 2023
+// Creation Date :     April 13, 2023
 //
-// Brief Description : Code for Assignment2, reversing an integer using modulos and
-                          converting a distance from miles to kilometers.
+// Brief Description : Code for the Water player's ammo. It moves and destroys
+        the ammo, and does "damage" when it hist the enemy.
 
 **********************************************************************************/
 
@@ -18,13 +18,19 @@ public class WaterAmmoBehavior : MonoBehaviour
     [SerializeField] private float ammoSpeed;
     [SerializeField] private float ammoLifeTime = 3;
 
+    /// <summary>
+    /// Update functoin moves the player's ammo and calls the destroy function 
+    ///     after the ammoLifeTime float's amount of time.
+    /// </summary>
     private void Update()
     {
         transform.Translate(Vector3.up * ammoSpeed * Time.deltaTime);
         Invoke("DestroyAmmo", ammoLifeTime);
     }
 
-    //what happens when ammo hits something
+    /// <summary>
+    /// what happens when ammo hits something
+    /// </summary>
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("Enemy"))
@@ -34,6 +40,9 @@ public class WaterAmmoBehavior : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Function called to destroy the ammo
+    /// </summary>
     private void DestroyAmmo()
     {
         Destroy(gameObject);

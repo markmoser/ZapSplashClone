@@ -1,11 +1,11 @@
 /**********************************************************************************
 
-// File Name :         Assignment2.cs
+// File Name :         PlayerBehavior.cs
 // Author :            Marissa Moser
-// Creation Date :     January 31, 2023
+// Creation Date :     April 13, 2023
 //
-// Brief Description : Code for Assignment2, reversing an integer using modulos and
-                          converting a distance from miles to kilometers.
+// Brief Description : Script for the player. Sets up all the actions ans interaction
+        such as interact and attack.
 
 **********************************************************************************/
 
@@ -21,7 +21,6 @@ public class PlayerBehavior : MonoBehaviour
     private float movementSpeed = 15f;
     private Vector2 movement;
     private Vector2 playerMovement;
-    //[SerializeField] private Transform orientation;
     [SerializeField] private float rotationSpeed = 2f;
     [SerializeField] private Rigidbody2D rb2D;
 
@@ -45,6 +44,9 @@ public class PlayerBehavior : MonoBehaviour
     public bool IsElePlayer;
     private bool inPlayerRange = false;
 
+    /// <summary>
+    /// Sets bools to begin as false.
+    /// </summary>
     private void Start()
     {
         inDoorRange = false;
@@ -60,6 +62,10 @@ public class PlayerBehavior : MonoBehaviour
         }
         print(otherPlayer);
     }
+
+    /// <summary>
+    /// Assigns input assets and actions to references
+    /// </summary>
     void Awake()
     {
         //assigns input assets and actions to references
@@ -85,11 +91,17 @@ public class PlayerBehavior : MonoBehaviour
 
     }
 
+    /// <summary>
+    /// Function called from DoorBehavior to move the players to their new position.
+    /// </summary>
     public void MovePlayer(Vector2 targetLoc)
     {
         transform.position = targetLoc;
     }
 
+    /// <summary>
+    /// Fixt update funcition actually moves and rotates the player 
+    /// </summary>
     void FixedUpdate()
     {
         if(/*!stunned*/true)
@@ -108,6 +120,10 @@ public class PlayerBehavior : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// When the player presses A to interact, does a variety of actions
+    ///     depending on the bools that are true.
+    /// </summary>
     public void Interact()
     {
         if (inDoorRange)
@@ -128,16 +144,25 @@ public class PlayerBehavior : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Spawns ammo when the player uses the trigger
+    /// </summary>
     private void Attack()
     {
         Instantiate(playerAmmo, ammoSpawn.transform.position, transform.rotation);
     }
 
+    /// <summary>
+    /// Resets the level back to the begginning
+    /// </summary>
     private void ResetLevel()
     {
         SceneManager.LoadScene(1);
     }
 
+    /// <summary>
+    /// Sets bools for the Interact action. 
+    /// </summary>
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.tag == "Door")
@@ -160,6 +185,10 @@ public class PlayerBehavior : MonoBehaviour
             collision.gameObject.GetComponent<PlayerBehavior>().inPlayerRange = true;
         }
     }
+
+    /// <summary>
+    /// Sets bools for the Interact action. 
+    /// </summary>
     private void OnTriggerExit2D(Collider2D collision)
     {
         if (collision.gameObject.tag == "Door")
@@ -180,10 +209,16 @@ public class PlayerBehavior : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// turns action map on
+    /// </summary>
     void OnEnable()
     {
         inputMap.Enable();
     }
+    /// <summary>
+    /// turns action map off
+    /// </summary>
     void OnDisable()
     {
         inputMap.Disable();

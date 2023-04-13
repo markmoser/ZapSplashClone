@@ -1,11 +1,10 @@
 /**********************************************************************************
 
-// File Name :         Assignment2.cs
+// File Name :         EnemyBehavior.cs
 // Author :            Marissa Moser
-// Creation Date :     January 31, 2023
+// Creation Date :     April 13, 2023
 //
-// Brief Description : Code for Assignment2, reversing an integer using modulos and
-                          converting a distance from miles to kilometers.
+// Brief Description : Code for the enemies. 
 
 **********************************************************************************/
 
@@ -17,7 +16,6 @@ public class EnemyBehavior : MonoBehaviour
 {
     [SerializeField] private GameObject gameController;
     private GameManager gameManager;
-
 
     [SerializeField] private float rateOfFire = 3f;
     [SerializeField] private float accuracy;
@@ -35,13 +33,16 @@ public class EnemyBehavior : MonoBehaviour
     public bool HitByEle = false;
     public bool HitByWater = false;
 
-
+    /// <summary>
+    /// Sets Refrences to their coresponding asset
+    /// </summary>
     private void Awake()
     {
         enemyAggro = this.gameObject.transform.GetComponentInChildren<EnemyAggroBehavior>();
         gameManager = gameController.GetComponent<GameManager>();
     }
 
+    //Update function checks for the enemy's death state
     private void Update()
     {
         if(HitByEle && HitByWater)
@@ -51,6 +52,10 @@ public class EnemyBehavior : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Coroutine for the enemies laser. Uses a line renderer to simulate the
+    ///     laser, and then calls the Shooting function after 1 second.
+    /// </summary>
     public IEnumerator Laser()
     {
         while(EnemyIsShooting)
@@ -68,6 +73,10 @@ public class EnemyBehavior : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Funcion called from the Laser Coroutine. Contains the raycast functionality
+    ///     and stunnd the player on hit.
+    /// </summary>
     private void EnemyShooting()
     {
         LineRend.enabled = false;

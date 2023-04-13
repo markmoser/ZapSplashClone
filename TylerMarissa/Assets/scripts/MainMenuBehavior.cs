@@ -1,11 +1,11 @@
 /**********************************************************************************
 
-// File Name :         Assignment2.cs
+// File Name :         MainMenuBehavior.cs
 // Author :            Marissa Moser
-// Creation Date :     January 31, 2023
+// Creation Date :     April 13, 2023
 //
-// Brief Description : Code for Assignment2, reversing an integer using modulos and
-                          converting a distance from miles to kilometers.
+// Brief Description : Code for the main menu. Adds functions for the two buttons,
+       play and quit, and sets the play button to be selected first.
 
 **********************************************************************************/
 
@@ -19,18 +19,27 @@ public class MainMenuBehavior : MonoBehaviour
 {
     public GameObject PlayButton;
 
+    /// <summary>
+    /// Begins the game
+    /// </summary>
     public void StartLevel()
     {
         SceneManager.LoadScene(1);
         Debug.Log("Start Level");
     }
 
+    /// <summary>
+    /// Quits the game
+    /// </summary>
     public void QuitGame()
     {
         Debug.Log("Quit Game");
         Application.Quit();
     }
 
+    /// <summary>
+    /// Start function is used to set the buttoon that will be selected first.
+    /// </summary>
     public void Start()
     {
         EventSystem.current.SetSelectedGameObject(PlayButton);
