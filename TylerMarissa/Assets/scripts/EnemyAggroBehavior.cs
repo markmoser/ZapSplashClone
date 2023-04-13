@@ -15,8 +15,8 @@ public class EnemyAggroBehavior : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        //when the player enters the range of the enemy
-        if (collision.gameObject.CompareTag("Player"))          //and if routine is not already running !!
+        //when the player enters the range of the enemy and enemy is not already shooting
+        if (collision.gameObject.CompareTag("Player") && !enemy.EnemyIsShooting)   
         {
             enemy.EnemyIsShooting = true;
             Player = collision.gameObject;

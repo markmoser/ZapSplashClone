@@ -5,11 +5,12 @@ using UnityEngine;
 public class EleAmmoBehavior : MonoBehaviour
 {
     [SerializeField] private float ammoSpeed;
+    [SerializeField] private float ammoLifeTime = 3;
 
     private void Update()
     {
         transform.Translate(Vector3.up * ammoSpeed * Time.deltaTime);
-        //destroy gameObject after time
+        Invoke("DestroyAmmo", ammoLifeTime);
     }
 
     //what happens when ammo hits something
@@ -18,7 +19,12 @@ public class EleAmmoBehavior : MonoBehaviour
         if (collision.gameObject.CompareTag("Enemy"))
         {
             collision.gameObject.GetComponent<EnemyBehavior>().HitByEle = true;
-            Destroy(gameObject);
+            //Destroy(gameObject);
         }
+    }
+
+    private void DestroyAmmo()
+    {
+        Destroy(gameObject);
     }
 }

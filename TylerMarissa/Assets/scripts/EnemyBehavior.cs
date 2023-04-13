@@ -15,7 +15,7 @@ public class EnemyBehavior : MonoBehaviour
 
     private Vector3 LaserAim;
     public LineRenderer LineRend;
-    [SerializeField] LayerMask layersToHit;
+    [SerializeField] LayerMask layersToIgnore;
 
     public bool HitByEle = false;
     public bool HitByWater = false;
@@ -39,13 +39,13 @@ public class EnemyBehavior : MonoBehaviour
     {
         while(EnemyIsShooting)
         {
-            LaserAim = enemyAggro.EnemyTarget;
-            LineRend.enabled = true;
+            LaserAim = enemyAggro.EnemyTarget;              //stores players current pos as where the enemy will aim
+            LineRend.enabled = true;                        //turns laser on
             LineRend.SetPosition(0, transform.position);
             LineRend.SetPosition(1, LaserAim);
             Debug.Log("Aim");
 
-            Invoke("EnemyShooting", 1);
+            Invoke("EnemyShooting", 1);                     //waits one second to shoot
             //laser power up sound
 
             yield return new WaitForSeconds(rateOfFire);
@@ -56,9 +56,8 @@ public class EnemyBehavior : MonoBehaviour
     {
         LineRend.enabled = false;
 
-        RaycastHit2D hit = Physics2D.Raycast(transform.position, LaserAim, enemyRange, layersToHit);
-        //Debug.DrawRay(transform.position, LaserAim, Color.black, 10f);
-        Debug.Log(hit.collider.gameObject.name);
+        RaycastHit2D hit = Physics2D.Raycast(transform.position, LaserAim, enemyRange, ~layersToIgnore);
+        //Debug.Log(hit.collider.gameObject.name);
         if (hit) //.collider.gameObject.CompareTag("Player"))
         {
             Debug.Log("hit");

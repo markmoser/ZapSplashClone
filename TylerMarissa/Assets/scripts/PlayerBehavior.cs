@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 public class PlayerBehavior : MonoBehaviour
 {
@@ -15,7 +16,7 @@ public class PlayerBehavior : MonoBehaviour
 
     private InputActionAsset inputAsset;
     private InputActionMap inputMap;
-    private InputAction move, interact, attack;
+    private InputAction move, interact, attack, resetLevel;
 
     private DoorBehavior doorScript;
     private ButtonBehavior buttonScript;
@@ -43,6 +44,7 @@ public class PlayerBehavior : MonoBehaviour
         move = inputMap.FindAction("Move");
         interact = inputMap.FindAction("Interact");
         attack = inputMap.FindAction("Attack");
+        resetLevel = inputMap.FindAction("ResetLevel");
 
         //sets the movement velocity for the players
         move.performed += ctx => movement = ctx.ReadValue<Vector2>();
@@ -53,6 +55,9 @@ public class PlayerBehavior : MonoBehaviour
 
         //players attack function
         attack.performed += ctx => Attack();
+
+        //reset level
+        resetLevel.performed += ctx => ResetLevel();
 
     }
 
@@ -93,6 +98,11 @@ public class PlayerBehavior : MonoBehaviour
     private void Attack()
     {
         Instantiate(playerAmmo, ammoSpawn.transform.position, transform.rotation);
+    }
+
+    private void ResetLevel()
+    {
+        SceneManager.LoadScene(0);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
