@@ -15,7 +15,7 @@ public class ButtonBehavior : MonoBehaviour
     public void PressButton()
     {
         if (!toggled) {
-            gmScript.countButton();
+            gmScript.CountButton();
         }
         toggled = true;
     }
