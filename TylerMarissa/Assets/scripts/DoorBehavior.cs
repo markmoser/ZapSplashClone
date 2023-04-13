@@ -23,7 +23,7 @@ public class DoorBehavior : MonoBehaviour
             (player.name == "ElectricPlayer" ? "WaterPlayer" : "ElectricPlayer")
             .GetComponent<PlayerBehavior>();
 
-        playerScript.MovePlayer(targetLoc2);*/
+        playerScript.MovePlayer(targetLoc2); */
         camScript.MoveCamera(20f * CamTargetLocX, 12f * CamTargetLocY);
     }
 }
