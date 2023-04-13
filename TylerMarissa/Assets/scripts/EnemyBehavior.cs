@@ -17,10 +17,22 @@ public class EnemyBehavior : MonoBehaviour
     public LineRenderer LineRend;
     [SerializeField] LayerMask layersToHit;
 
+    public bool HitByEle = false;
+    public bool HitByWater = false;
+
 
     private void Awake()
     {
         enemyAggro = this.gameObject.transform.GetComponentInChildren<EnemyAggroBehavior>();
+    }
+
+    private void Update()
+    {
+        if(HitByEle && HitByWater)
+        {
+            Destroy(gameObject);
+            //enemy count go down 
+        }
     }
 
     public IEnumerator Laser()

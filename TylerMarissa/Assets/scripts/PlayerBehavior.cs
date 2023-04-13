@@ -8,13 +8,26 @@ public class PlayerBehavior : MonoBehaviour
 {
     private float movementSpeed = 15f;
     private Vector2 movement;
-    private DoorBehavior doorScript;
-    private ButtonBehavior buttonScript;
+    private Vector2 playerMovement;
+    //[SerializeField] private Transform orientation;
+    [SerializeField] private float rotationSpeed = 2f;
+    [SerializeField] private Rigidbody2D rb2D;
+
     private InputActionAsset inputAsset;
     private InputActionMap inputMap;
-    private InputAction move,interact;
+    private InputAction move, interact, attack;
+
+    private DoorBehavior doorScript;
+    private ButtonBehavior buttonScript;
+
     private bool inDoorRange, touchingButton;
     public bool stunned;
+
+    [SerializeField] private GameObject playerAmmo;
+    public float ammoSpeed;
+    [SerializeField] private GameObject ammoSpawn;
+
+    public bool IsElePlayer;
 
     private void Start()
     {
@@ -24,15 +37,22 @@ public class PlayerBehavior : MonoBehaviour
     }
     void Awake()
     {
+        //assigns input assets and actions to references
         inputAsset = this.GetComponent<PlayerInput>().actions;
         inputMap = inputAsset.FindActionMap("PlayerActions");
         move = inputMap.FindAction("Move");
         interact = inputMap.FindAction("Interact");
+        attack = inputMap.FindAction("Attack");
+
         //sets the movement velocity for the players
         move.performed += ctx => movement = ctx.ReadValue<Vector2>();
         move.canceled += ctx => movement = Vector2.zero; //(0,0)
+
         //allows you to interact with objects you are in rage of
         interact.performed += ctx => Interact();
+
+        //players attack function
+        attack.performed += ctx => Attack();
 
     }
 
@@ -40,9 +60,28 @@ public class PlayerBehavior : MonoBehaviour
     {
         transform.position = targetLoc;
     }
+
+    void FixedUpdate()
+    {
+        if(!stunned)
+        {
+            //movement
+            Vector2 movementVelocity = new Vector2(movement.x, movement.y) * movementSpeed * Time.deltaTime;
+            transform.Translate(movementVelocity, Space.Self);
+
+            //rotation of the player during movement
+            //orientation.Rotate(movement.x, movement.y, 0);
+            //playerMovement = rb2D.velocity;
+            Quaternion targetRotation = Quaternion.LookRotation(transform.forward, movement);
+            Quaternion rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
+            rb2D.MoveRotation(rotation);
+        }
+    }
+
     public void Interact()
     {
-        if (inDoorRange) {
+        if (inDoorRange)
+        {
             doorScript.GoThroughDoor(gameObject);
         }
         if (touchingButton)
@@ -50,14 +89,12 @@ public class PlayerBehavior : MonoBehaviour
             buttonScript.PressButton();
         }
     }
-    void FixedUpdate()
+
+    private void Attack()
     {
-        if(!stunned)
-        {
-            Vector2 movementVelocity = new Vector2(movement.x, movement.y) * movementSpeed * Time.deltaTime;
-            transform.Translate(movementVelocity, Space.Self);
-        }
+        Instantiate(playerAmmo, ammoSpawn.transform.position, transform.rotation);
     }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.tag == "Door")
@@ -83,11 +120,11 @@ public class PlayerBehavior : MonoBehaviour
             touchingButton = false;
         }
     }
+
     void OnEnable()
     {
         inputMap.Enable();
     }
-
     void OnDisable()
     {
         inputMap.Disable();
