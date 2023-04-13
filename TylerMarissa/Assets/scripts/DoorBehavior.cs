@@ -18,6 +18,7 @@ public class DoorBehavior : MonoBehaviour
     private PlayerBehavior playerScript;
     private CameraBehavior camScript;
     private Vector2 doorLocation, targetLoc1, targetLoc2;
+
     [SerializeField] private float targetLoc1x = 0, targetLoc1y = 0;
     [SerializeField] private float targetLoc2x = 0, targetLoc2y = 0;
     [SerializeField] private float CamTargetLocX = 0, CamTargetLocY = 0;
@@ -27,14 +28,13 @@ public class DoorBehavior : MonoBehaviour
         targetLoc2 = new Vector2(targetLoc2x, targetLoc2y);
         camScript = GameObject.Find("Main Camera").GetComponent<CameraBehavior>();
     }
-    public void GoThroughDoor(GameObject player) {
+    public void GoThroughDoor(GameObject player, GameObject otherPlayer) {
         playerScript = player.GetComponent<PlayerBehavior>();
         playerScript.MovePlayer(targetLoc1);
-        /*playerScript = GameObject.Find
-            (player.name == "ElectricPlayer" ? "WaterPlayer" : "ElectricPlayer")
-            .GetComponent<PlayerBehavior>();
-
-        playerScript.MovePlayer(targetLoc2); */
+        print(otherPlayer);
+        playerScript = otherPlayer.GetComponent<PlayerBehavior>();
+        
+        playerScript.MovePlayer(targetLoc2);
         camScript.MoveCamera(20f * CamTargetLocX, 12f * CamTargetLocY);
     }
 }

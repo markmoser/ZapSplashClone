@@ -59,7 +59,7 @@ public class EnemyBehavior : MonoBehaviour
             LineRend.enabled = true;                        //turns laser on, want to fade it in using alpha?
             LineRend.SetPosition(0, transform.position);
             LineRend.SetPosition(1, LaserAim);
-            Debug.Log("Aim");
+            //Debug.Log("Aim");
 
             Invoke("EnemyShooting", 1);                     //waits one second to shoot
             //laser power up sound

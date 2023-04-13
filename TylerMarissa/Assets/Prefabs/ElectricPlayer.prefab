@@ -306,6 +306,7 @@ MonoBehaviour:
   rotationSpeed: 900
   rb2D: {fileID: 8371807251257536525}
   stunned: 0
+  otherPlayer: {fileID: 3207062486373988298, guid: dadf98177e679bc4ab52f3caa43c9107, type: 3}
   playerAmmo: {fileID: 2336550799899013434, guid: b6a0a77e03b12fa4285ee806d4f06635, type: 3}
   ammoSpeed: 0
   ammoSpawn: {fileID: 2515348482433915715}

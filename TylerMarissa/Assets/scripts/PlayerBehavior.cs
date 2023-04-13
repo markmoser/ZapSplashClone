@@ -25,6 +25,8 @@ public class PlayerBehavior : MonoBehaviour
     [SerializeField] private float rotationSpeed = 2f;
     [SerializeField] private Rigidbody2D rb2D;
 
+    private GameObject otherPlayer;
+
     private InputActionAsset inputAsset;
     private InputActionMap inputMap;
     private InputAction move, interact, attack, resetLevel;
@@ -49,6 +51,14 @@ public class PlayerBehavior : MonoBehaviour
         touchingButton = false;
         inCellDoorRange = false;
         stunned = false;
+        if (IsElePlayer)
+        {
+            otherPlayer = GameObject.Find("WaterPlayer(Clone)");
+        }
+        else {
+            otherPlayer = GameObject.Find("ElectricPlayer(Clone)");
+        }
+        print(otherPlayer);
     }
     void Awake()
     {
@@ -102,7 +112,7 @@ public class PlayerBehavior : MonoBehaviour
     {
         if (inDoorRange)
         {
-            doorScript.GoThroughDoor(gameObject);
+            doorScript.GoThroughDoor(gameObject, otherPlayer);
         }
         if (touchingButton)
         {
