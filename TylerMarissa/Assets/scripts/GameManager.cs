@@ -15,6 +15,9 @@ public class GameManager : MonoBehaviour
     private int prisonersFreed = 0;
 
     [SerializeField] private Slider enemiesKilledSlider;
+    [SerializeField] private Slider buttonsPressedSlider;
+    [SerializeField] private Slider npcsFreedSlider;
+
     void Start()
     {
         PlayerInput.Instantiate(ElePlayer, 0, null, pairWithDevice: Gamepad.all[0]);
@@ -24,6 +27,8 @@ public class GameManager : MonoBehaviour
     private void Update()
     {
         enemiesKilledSlider.value = EnemiesKilled;
+        buttonsPressedSlider.value = buttonsPressed;
+        npcsFreedSlider.value = prisonersFreed;
     }
 
     public void CountButton()

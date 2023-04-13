@@ -822,6 +822,7 @@ GameObject:
   m_Component:
   - component: {fileID: 372630106}
   - component: {fileID: 372630107}
+  - component: {fileID: 372630108}
   m_Layer: 0
   m_Name: Button1
   m_TagString: Untagged
@@ -896,6 +897,19 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &372630108
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 372630105}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 84c92c3711914ea4aa52c8cead2ec19e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameController: {fileID: 1859968571}
 --- !u!1 &406637637
 GameObject:
   m_ObjectHideFlags: 0
@@ -25381,6 +25395,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1858073668}
   - component: {fileID: 1858073669}
+  - component: {fileID: 1858073670}
   m_Layer: 0
   m_Name: Button2
   m_TagString: Untagged
@@ -25455,6 +25470,19 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1858073670
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1858073667}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 84c92c3711914ea4aa52c8cead2ec19e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameController: {fileID: 1859968571}
 --- !u!1 &1859968571
 GameObject:
   m_ObjectHideFlags: 0
@@ -25548,6 +25576,8 @@ MonoBehaviour:
   WaterPlayer: {fileID: 3207062486373988298, guid: dadf98177e679bc4ab52f3caa43c9107, type: 3}
   EnemiesKilled: 0
   enemiesKilledSlider: {fileID: 241556182}
+  buttonsPressedSlider: {fileID: 1766030060}
+  npcsFreedSlider: {fileID: 1890101602}
 --- !u!1 &1890101600
 GameObject:
   m_ObjectHideFlags: 0
@@ -25649,6 +25679,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1915626747}
   - component: {fileID: 1915626748}
+  - component: {fileID: 1915626749}
   m_Layer: 0
   m_Name: Button
   m_TagString: Untagged
@@ -25723,6 +25754,19 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1915626749
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1915626746}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 84c92c3711914ea4aa52c8cead2ec19e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameController: {fileID: 1859968571}
 --- !u!1 &1918320360
 GameObject:
   m_ObjectHideFlags: 0
@@ -26168,6 +26212,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2073809357}
   - component: {fileID: 2073809358}
+  - component: {fileID: 2073809359}
   m_Layer: 0
   m_Name: Button3
   m_TagString: Untagged
@@ -26242,6 +26287,19 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &2073809359
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2073809356}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 84c92c3711914ea4aa52c8cead2ec19e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameController: {fileID: 1859968571}
 --- !u!1 &2082224271
 GameObject:
   m_ObjectHideFlags: 0
