@@ -9,10 +9,15 @@ public class GameManager : MonoBehaviour
     public GameObject ElePlayer;
     public GameObject WaterPlayer;
     //public PlayerInputManager pIM;
-    [SerializeField] private GameObject buttonText;
+
     private int buttonsPressed = 0;
     public int EnemiesKilled = 0;
     private int prisonersFreed = 0;
+
+    [SerializeField] private Slider enemiesKilledSlider;
+    [SerializeField] private Slider buttonsPressedSlider;
+    [SerializeField] private Slider npcsFreedSlider;
+
     void Start()
     {
         PlayerInput.Instantiate(ElePlayer, 0, null, pairWithDevice: Gamepad.all[0]);
@@ -21,14 +26,14 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
-
+        enemiesKilledSlider.value = EnemiesKilled;
+        buttonsPressedSlider.value = buttonsPressed;
+        npcsFreedSlider.value = prisonersFreed;
     }
 
     public void CountButton()
     {
         buttonsPressed++;
-        print("Buttons: " + buttonsPressed + "/4");
-        buttonText.GetComponent<Text>().text = "Buttons: " + buttonsPressed + "/4";
     }
     public void CountPrisoner()
     {
