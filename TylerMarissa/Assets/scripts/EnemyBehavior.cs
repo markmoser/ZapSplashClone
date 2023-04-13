@@ -1,3 +1,14 @@
+/**********************************************************************************
+
+// File Name :         Assignment2.cs
+// Author :            Marissa Moser
+// Creation Date :     January 31, 2023
+//
+// Brief Description : Code for Assignment2, reversing an integer using modulos and
+                          converting a distance from miles to kilometers.
+
+**********************************************************************************/
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -36,7 +47,7 @@ public class EnemyBehavior : MonoBehaviour
         if(HitByEle && HitByWater)
         {
             Destroy(gameObject);
-            ++gameManager.EnemiesKilled;
+            gameManager.CountEnemy();
         }
     }
 
@@ -45,7 +56,7 @@ public class EnemyBehavior : MonoBehaviour
         while(EnemyIsShooting)
         {
             LaserAim = enemyAggro.EnemyTarget;              //stores players current pos as where the enemy will aim
-            LineRend.enabled = true;                        //turns laser on
+            LineRend.enabled = true;                        //turns laser on, want to fade it in using alpha?
             LineRend.SetPosition(0, transform.position);
             LineRend.SetPosition(1, LaserAim);
             Debug.Log("Aim");
@@ -66,7 +77,7 @@ public class EnemyBehavior : MonoBehaviour
         if (hit) //.collider.gameObject.CompareTag("Player"))
         {
             Debug.Log("hit");
-            enemyAggro.Player.GetComponent<PlayerBehavior>().stunned = true;
+            //enemyAggro.Player.GetComponent<PlayerBehavior>().stunned = true;
 
             EnemyIsShooting = false;
         }

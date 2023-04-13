@@ -1,3 +1,14 @@
+/**********************************************************************************
+
+// File Name :         Assignment2.cs
+// Author :            Marissa Moser
+// Creation Date :     January 31, 2023
+//
+// Brief Description : Code for Assignment2, reversing an integer using modulos and
+                          converting a distance from miles to kilometers.
+
+**********************************************************************************/
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -23,7 +34,7 @@ public class DoorBehavior : MonoBehaviour
             (player.name == "ElectricPlayer" ? "WaterPlayer" : "ElectricPlayer")
             .GetComponent<PlayerBehavior>();
 
-        playerScript.MovePlayer(targetLoc2);*/
+        playerScript.MovePlayer(targetLoc2); */
         camScript.MoveCamera(20f * CamTargetLocX, 12f * CamTargetLocY);
     }
 }
