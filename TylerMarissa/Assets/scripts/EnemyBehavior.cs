@@ -66,7 +66,7 @@ public class EnemyBehavior : MonoBehaviour
         if (hit) //.collider.gameObject.CompareTag("Player"))
         {
             Debug.Log("hit");
-            enemyAggro.Player.GetComponent<PlayerBehavior>().stunned = true;
+            //enemyAggro.Player.GetComponent<PlayerBehavior>().stunned = true;
 
             EnemyIsShooting = false;
         }

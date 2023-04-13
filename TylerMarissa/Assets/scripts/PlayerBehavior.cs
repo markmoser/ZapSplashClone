@@ -7,7 +7,7 @@ using UnityEngine.SceneManagement;
 
 public class PlayerBehavior : MonoBehaviour
 {
-    private float movementSpeed = 8f;
+    private float movementSpeed = 15f;
     private Vector2 movement;
     private Vector2 playerMovement;
     //[SerializeField] private Transform orientation;

@@ -23,7 +23,7 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         PlayerInput.Instantiate(ElePlayer, 0, null, pairWithDevice: Gamepad.all[0]);
-        PlayerInput.Instantiate(WaterPlayer, 1, null, pairWithDevice: Gamepad.all[1]);
+        //PlayerInput.Instantiate(WaterPlayer, 1, null, pairWithDevice: Gamepad.all[1]);
 
         ExitDoor = GameObject.Find("ExitDoor");
         exitDoorScript = ExitDoor.GetComponent<ExitDoorBehavior>();
@@ -34,7 +34,8 @@ public class GameManager : MonoBehaviour
         enemiesKilledSlider.value = EnemiesKilled;
         buttonsPressedSlider.value = buttonsPressed;
         npcsFreedSlider.value = prisonersFreed;
-        if (prisonersFreed >= 8 && buttonsPressed >= 4 && EnemiesKilled >= 0) {
+        if (prisonersFreed >= 8 && buttonsPressed >= 4) // && EnemiesKilled >= 0) 
+        {
             exitDoorScript.OpenDoor();
         }
     }
