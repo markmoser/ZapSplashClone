@@ -31,9 +31,7 @@ public class DoorBehavior : MonoBehaviour
     public void GoThroughDoor(GameObject player, GameObject otherPlayer) {
         playerScript = player.GetComponent<PlayerBehavior>();
         playerScript.MovePlayer(targetLoc1);
-        print(otherPlayer);
         playerScript = otherPlayer.GetComponent<PlayerBehavior>();
-        
         playerScript.MovePlayer(targetLoc2);
         camScript.MoveCamera(20f * CamTargetLocX, 12f * CamTargetLocY);
     }

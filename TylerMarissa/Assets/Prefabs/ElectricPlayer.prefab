@@ -192,7 +192,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8371807251257536527}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -6.45, y: -3.25, z: 0}
+  m_LocalPosition: {x: -7, y: -3, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -306,7 +306,6 @@ MonoBehaviour:
   rotationSpeed: 900
   rb2D: {fileID: 8371807251257536525}
   stunned: 0
-  otherPlayer: {fileID: 3207062486373988298, guid: dadf98177e679bc4ab52f3caa43c9107, type: 3}
   playerAmmo: {fileID: 2336550799899013434, guid: b6a0a77e03b12fa4285ee806d4f06635, type: 3}
   ammoSpeed: 0
   ammoSpawn: {fileID: 2515348482433915715}
