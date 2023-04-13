@@ -21,8 +21,8 @@ public class GameManager : MonoBehaviour
     public void countButton()
     {
         buttonsPressed++;
-        Text temp = buttonText.GetComponent<Text>();
-        temp.text = "Buttons : " + buttonsPressed + "/4";
+        print("Buttons: " + buttonsPressed + "/4");
+        buttonText.GetComponent<Text>().text = "Buttons: " + buttonsPressed + "/4";
     }
     public void countPrisoner()
     {
