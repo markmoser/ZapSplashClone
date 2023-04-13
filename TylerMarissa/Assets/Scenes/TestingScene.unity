@@ -25547,6 +25547,7 @@ MonoBehaviour:
   ElePlayer: {fileID: 8371807251257536527, guid: 34bbec7355ee9ba46b2e97da2daef860, type: 3}
   WaterPlayer: {fileID: 3207062486373988298, guid: dadf98177e679bc4ab52f3caa43c9107, type: 3}
   EnemiesKilled: 0
+  enemiesKilledSlider: {fileID: 241556182}
 --- !u!1 &1890101600
 GameObject:
   m_ObjectHideFlags: 0
