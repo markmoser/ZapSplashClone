@@ -38,8 +38,8 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         PlayerInput.Instantiate(ElePlayer, 0, null, pairWithDevice: Gamepad.all[0]);
-        //PlayerInput.Instantiate(WaterPlayer, 1, null, pairWithDevice: Gamepad.all[1]);//comment out this line to test with 1 player
-        Instantiate(WaterPlayer);//uncomment this line to test with 1 player
+        PlayerInput.Instantiate(WaterPlayer, 1, null, pairWithDevice: Gamepad.all[1]);//comment out this line to test with 1 player
+        //Instantiate(WaterPlayer);//uncomment this line to test with 1 player
 
         ExitDoor = GameObject.Find("ExitDoor");
         exitDoorScript = ExitDoor.GetComponent<ExitDoorBehavior>();
