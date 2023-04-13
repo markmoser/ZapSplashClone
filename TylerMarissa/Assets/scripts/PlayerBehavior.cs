@@ -70,7 +70,7 @@ public class PlayerBehavior : MonoBehaviour
 
     void FixedUpdate()
     {
-        if(!stunned)
+        if(/*!stunned*/true)
         {
             //movement
             Vector2 movementVelocity = new Vector2(movement.x, movement.y) * movementSpeed * Time.deltaTime;
