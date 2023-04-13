@@ -9,7 +9,7 @@ public class GameManager : MonoBehaviour
     public GameObject ElePlayer;
     public GameObject WaterPlayer;
     //public PlayerInputManager pIM;
-
+    [SerializeField] private GameObject buttonText;
     private int buttonsPressed = 0;
     public int EnemiesKilled = 0;
     private int prisonersFreed = 0;
@@ -29,6 +29,8 @@ public class GameManager : MonoBehaviour
     public void CountButton()
     {
         buttonsPressed++;
+        print("Buttons: " + buttonsPressed + "/4");
+        buttonText.GetComponent<Text>().text = "Buttons: " + buttonsPressed + "/4";
     }
     public void CountPrisoner()
     {

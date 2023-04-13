@@ -6,11 +6,16 @@ using UnityEngine;
 public class ButtonBehavior : MonoBehaviour
 {
     private bool toggled = false;
-    private GameManager gm = GameObject.Find("GameControler").GetComponent<GameManager>();
+    private GameObject gm;
+    private GameManager gmScript;
+    public void Start() {
+        gm = GameObject.Find("GameController");
+        gmScript = gm.GetComponent<GameManager>();
+    }
     public void PressButton()
     {
         if (!toggled) {
-            gm.CountButton();
+            gmScript.countButton();
         }
         toggled = true;
     }

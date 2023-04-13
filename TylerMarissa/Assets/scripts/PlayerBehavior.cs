@@ -7,7 +7,7 @@ using UnityEngine.SceneManagement;
 
 public class PlayerBehavior : MonoBehaviour
 {
-    private float movementSpeed = 5f;
+    private float movementSpeed = 15f;
     private Vector2 movement;
     private Vector2 playerMovement;
     //[SerializeField] private Transform orientation;
@@ -115,6 +115,7 @@ public class PlayerBehavior : MonoBehaviour
         }
         if (collision.gameObject.tag == "Button")
         {
+            print(collision.name);
             touchingButton = true;
             buttonScript = collision.gameObject.GetComponent<ButtonBehavior>();
         }
