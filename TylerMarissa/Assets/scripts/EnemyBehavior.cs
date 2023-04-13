@@ -4,6 +4,10 @@ using UnityEngine;
 
 public class EnemyBehavior : MonoBehaviour
 {
+    [SerializeField] private GameObject gameController;
+    [SerializeField] private GameManager gameManager;
+
+
     [SerializeField] private float rateOfFire = 3f;
     [SerializeField] private float accuracy;
     [SerializeField] private float enemyRange;
@@ -24,6 +28,7 @@ public class EnemyBehavior : MonoBehaviour
     private void Awake()
     {
         enemyAggro = this.gameObject.transform.GetComponentInChildren<EnemyAggroBehavior>();
+        gameManager = gameController.GetComponent<GameManager>();
     }
 
     private void Update()
@@ -31,7 +36,7 @@ public class EnemyBehavior : MonoBehaviour
         if(HitByEle && HitByWater)
         {
             Destroy(gameObject);
-            //enemy count go down 
+            ++gameManager.EnemiesKilled;
         }
     }
 

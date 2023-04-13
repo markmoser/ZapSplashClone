@@ -5,11 +5,12 @@ using UnityEngine;
 public class WaterAmmoBehavior : MonoBehaviour
 {
     [SerializeField] private float ammoSpeed;
+    [SerializeField] private float ammoLifeTime = 3;
 
     private void Update()
     {
         transform.Translate(Vector3.up * ammoSpeed * Time.deltaTime);
-        //destroy gameObject after time
+        Invoke("DestroyAmmo", ammoLifeTime);
     }
 
     //what happens when ammo hits something
@@ -17,8 +18,13 @@ public class WaterAmmoBehavior : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Enemy"))
         {
-            collision.gameObject.GetComponent<EnemyBehavior>().HitByWater = true;  
-            Destroy(gameObject);
+            collision.gameObject.GetComponent<EnemyBehavior>().HitByWater = true;
+            //Destroy(gameObject);
         }
+    }
+
+    private void DestroyAmmo()
+    {
+        Destroy(gameObject);
     }
 }

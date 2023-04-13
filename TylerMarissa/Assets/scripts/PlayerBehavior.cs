@@ -72,14 +72,15 @@ public class PlayerBehavior : MonoBehaviour
         {
             //movement
             Vector2 movementVelocity = new Vector2(movement.x, movement.y) * movementSpeed * Time.deltaTime;
-            transform.Translate(movementVelocity, Space.Self);
+            transform.Translate(movementVelocity, Space.World);
 
             //rotation of the player during movement
-            //orientation.Rotate(movement.x, movement.y, 0);
-            //playerMovement = rb2D.velocity;
-            Quaternion targetRotation = Quaternion.LookRotation(transform.forward, movement);
-            Quaternion rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
-            rb2D.MoveRotation(rotation);
+            if(movement != Vector2.zero)
+            {
+                Quaternion targetRotation = Quaternion.LookRotation(transform.forward, movement);
+                Quaternion rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
+                rb2D.MoveRotation(rotation);
+            }
         }
     }
 

@@ -10,7 +10,7 @@ public class ButtonBehavior : MonoBehaviour
     public void PressButton()
     {
         if (!toggled) {
-            gm.countButton();
+            gm.CountButton();
         }
         toggled = true;
     }
