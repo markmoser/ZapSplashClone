@@ -5,7 +5,7 @@ using UnityEngine;
 public class EnemyBehavior : MonoBehaviour
 {
     [SerializeField] private GameObject gameController;
-    [SerializeField] private GameManager gameManager;
+    private GameManager gameManager;
 
 
     [SerializeField] private float rateOfFire = 3f;
