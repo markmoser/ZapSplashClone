@@ -7,7 +7,7 @@ using UnityEngine.SceneManagement;
 
 public class PlayerBehavior : MonoBehaviour
 {
-    private float movementSpeed = 15f;
+    private float movementSpeed = 8f;
     private Vector2 movement;
     private Vector2 playerMovement;
     //[SerializeField] private Transform orientation;
@@ -30,6 +30,7 @@ public class PlayerBehavior : MonoBehaviour
     [SerializeField] private GameObject ammoSpawn;
 
     public bool IsElePlayer;
+    private bool inPlayerRange = false;
 
     private void Start()
     {
@@ -100,6 +101,10 @@ public class PlayerBehavior : MonoBehaviour
         {
             cellDoorScript.OpenDoor();
         }
+        if(inPlayerRange)
+        {
+            //stunned = false;
+        }
     }
 
     private void Attack()
@@ -129,6 +134,10 @@ public class PlayerBehavior : MonoBehaviour
             inCellDoorRange = true;
             cellDoorScript = collision.gameObject.GetComponent<CellDoorBehavior>();
         }
+        if (collision.gameObject.tag == "Player")
+        {
+            collision.gameObject.GetComponent<PlayerBehavior>().inPlayerRange = true;
+        }
     }
     private void OnTriggerExit2D(Collider2D collision)
     {
@@ -143,6 +152,10 @@ public class PlayerBehavior : MonoBehaviour
         if (collision.gameObject.tag == "CellDoor")
         {
             inCellDoorRange = false;
+        }
+        if (collision.gameObject.tag == "Player")
+        {
+            collision.gameObject.GetComponent<PlayerBehavior>().inPlayerRange = false;
         }
     }
 
