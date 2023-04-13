@@ -20,8 +20,9 @@ public class PlayerBehavior : MonoBehaviour
 
     private DoorBehavior doorScript;
     private ButtonBehavior buttonScript;
+    private CellDoorBehavior cellDoorScript;
 
-    private bool inDoorRange, touchingButton;
+    private bool inDoorRange, touchingButton, inCellDoorRange;
     public bool stunned;
 
     [SerializeField] private GameObject playerAmmo;
@@ -34,6 +35,7 @@ public class PlayerBehavior : MonoBehaviour
     {
         inDoorRange = false;
         touchingButton = false;
+        inCellDoorRange = false;
         stunned = false;
     }
     void Awake()
@@ -94,6 +96,10 @@ public class PlayerBehavior : MonoBehaviour
         {
             buttonScript.PressButton();
         }
+        if (inCellDoorRange)
+        {
+            cellDoorScript.OpenDoor();
+        }
     }
 
     private void Attack()
@@ -115,9 +121,13 @@ public class PlayerBehavior : MonoBehaviour
         }
         if (collision.gameObject.tag == "Button")
         {
-            print(collision.name);
             touchingButton = true;
             buttonScript = collision.gameObject.GetComponent<ButtonBehavior>();
+        }
+        if (collision.gameObject.tag == "CellDoor")
+        {
+            inCellDoorRange = true;
+            cellDoorScript = collision.gameObject.GetComponent<CellDoorBehavior>();
         }
     }
     private void OnTriggerExit2D(Collider2D collision)
@@ -129,6 +139,10 @@ public class PlayerBehavior : MonoBehaviour
         if (collision.gameObject.tag == "Button")
         {
             touchingButton = false;
+        }
+        if (collision.gameObject.tag == "CellDoor")
+        {
+            inCellDoorRange = false;
         }
     }
 
