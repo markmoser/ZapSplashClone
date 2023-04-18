@@ -45,7 +45,7 @@ public class EnemyBehavior : MonoBehaviour
     //Update function checks for the enemy's death state
     private void Update()
     {
-        if(HitByEle && HitByWater)
+        if(HitByEle || HitByWater)
         {
             Destroy(gameObject);
             gameManager.CountEnemy();
