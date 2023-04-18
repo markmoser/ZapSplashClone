@@ -19,7 +19,7 @@ public class EnemyBehavior : MonoBehaviour
 
     [SerializeField] private float rateOfFire = 3f;
     [SerializeField] private float accuracy;
-    [SerializeField] private float enemyRange;
+    [SerializeField] private float enemyRange = 50;
     //public float SpeedOfAmmo;
 
     //public GameObject EnemyAmmo;
@@ -40,6 +40,8 @@ public class EnemyBehavior : MonoBehaviour
     {
         enemyAggro = this.gameObject.transform.GetComponentInChildren<EnemyAggroBehavior>();
         gameManager = gameController.GetComponent<GameManager>();
+
+        enemyRange = 50f;
     }
 
     //Update function checks for the enemy's death state
@@ -82,12 +84,14 @@ public class EnemyBehavior : MonoBehaviour
         LineRend.enabled = false;
 
         RaycastHit2D hit = Physics2D.Raycast(transform.position, LaserAim, enemyRange, ~layersToIgnore);
-        //Debug.Log(hit.collider.gameObject.name);
-        if (hit) //.collider.gameObject.CompareTag("Player"))
+        //Debug.Log(hit);
+        //enemyAggro.EnemyTarget == LaserAim
+        if (hit)
         {
-            Debug.Log("hit");
-            //enemyAggro.Player.GetComponent<PlayerBehavior>().stunned = true;
-
+            //Debug.Log("was hit");
+            //Debug.Log(hit.collider.gameObject.transform.parent.name);
+            //do not delete this debug
+            //hit.collider.gameObject.transform.parent.GetComponent<PlayerBehavior>().stunned = true;
             EnemyIsShooting = false;
         }
     }

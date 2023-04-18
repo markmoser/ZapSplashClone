@@ -60,7 +60,7 @@ public class PlayerBehavior : MonoBehaviour
         else {
             otherPlayer = GameObject.Find("ElectricPlayer(Clone)");
         }
-        print(otherPlayer);
+        //print(otherPlayer);
     }
 
     /// <summary>
@@ -104,7 +104,7 @@ public class PlayerBehavior : MonoBehaviour
     /// </summary>
     void FixedUpdate()
     {
-        if(/*!stunned*/true)
+        if(!stunned == true)
         {
             //movement
             Vector2 movementVelocity = new Vector2(movement.x, movement.y) * movementSpeed * Time.deltaTime;

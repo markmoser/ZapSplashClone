@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8633421801287836505}
   - component: {fileID: 3819244603160409396}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Circle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -93,7 +93,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8275012801780704738}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: AmmoSpawn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -125,7 +125,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8739188990966813596}
   - component: {fileID: 2944584450007823622}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: PlayerRange
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -177,7 +177,7 @@ GameObject:
   - component: {fileID: 8371807251257536525}
   - component: {fileID: 8371807251257536524}
   - component: {fileID: 8371807251257536513}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: ElectricPlayer
   m_TagString: Player
   m_Icon: {fileID: 0}

@@ -38,6 +38,7 @@ public class EnemyAggroBehavior : MonoBehaviour
         {
             enemy.EnemyIsShooting = true;
             Player = collision.gameObject;
+            EnemyTarget = collision.gameObject.transform.position;
             StartCoroutine(enemy.Laser());
         }
 
