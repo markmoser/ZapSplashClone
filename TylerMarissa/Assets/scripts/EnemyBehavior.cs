@@ -82,17 +82,21 @@ public class EnemyBehavior : MonoBehaviour
     private void EnemyShooting()
     {
         LineRend.enabled = false;
+        //just get rid of the line renderer and use the ball
 
-        RaycastHit2D hit = Physics2D.Raycast(transform.position, LaserAim, enemyRange, ~layersToIgnore);
+
+        /*
+        RaycastHit2D hit = Physics2D.Raycast(transform.position, LaserAim, ~layersToIgnore);
         //Debug.Log(hit);
         //enemyAggro.EnemyTarget == LaserAim
         if (hit)
         {
-            //Debug.Log("was hit");
-            //Debug.Log(hit.collider.gameObject.transform.parent.name);
+            Debug.Log("was hit");
+            Debug.Log(hit.collider.gameObject.transform.parent.name);
             //do not delete this debug
-            //hit.collider.gameObject.transform.parent.GetComponent<PlayerBehavior>().stunned = true;
+            hit.collider.gameObject.transform.parent.GetComponent<PlayerBehavior>().stunned = true;
             EnemyIsShooting = false;
         }
+        */
     }
 }
