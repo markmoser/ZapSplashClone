@@ -15,7 +15,21 @@ using UnityEngine;
 
 public class ExitDoorBehavior : MonoBehaviour
 {
+    [SerializeField] private GameObject requirementsText;
     public void OpenDoor() {
         gameObject.SetActive(false);
+    }
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag == "player") {
+            requirementsText.SetActive(true);
+        }
+    }
+    private void OnCollisionExit2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag == "player")
+        {
+            requirementsText.SetActive(false);
+        }
     }
 }
