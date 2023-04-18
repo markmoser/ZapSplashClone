@@ -18,7 +18,7 @@ using UnityEngine.SceneManagement;
 
 public class PlayerBehavior : MonoBehaviour
 {
-    private float movementSpeed = 15f;
+    private float movementSpeed = 5f;
     private Vector2 movement;
     private Vector2 playerMovement;
     [SerializeField] private float rotationSpeed = 2f;
@@ -182,7 +182,7 @@ public class PlayerBehavior : MonoBehaviour
         }
         if (collision.gameObject.tag == "Player")
         {
-            collision.gameObject.GetComponent<PlayerBehavior>().inPlayerRange = true;
+            //collision.gameObject.GetComponent<PlayerBehavior>().inPlayerRange = true;
         }
     }
 
@@ -205,7 +205,7 @@ public class PlayerBehavior : MonoBehaviour
         }
         if (collision.gameObject.tag == "Player")
         {
-            collision.gameObject.GetComponent<PlayerBehavior>().inPlayerRange = false;
+            //collision.gameObject.GetComponent<PlayerBehavior>().inPlayerRange = false;
         }
     }
 
