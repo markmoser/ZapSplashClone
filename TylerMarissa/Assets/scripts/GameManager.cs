@@ -58,6 +58,11 @@ public class GameManager : MonoBehaviour
         {
             exitDoorScript.OpenDoor();
         }
+
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            Application.Quit();
+        }
     }
 
     /// <summary>
