@@ -10,9 +10,10 @@ GameObject:
   m_Component:
   - component: {fileID: 2336550799899013431}
   - component: {fileID: 2336550799899013432}
-  - component: {fileID: 1364938895617909275}
+  - component: {fileID: 4690307608922987509}
   - component: {fileID: 8860321837423340557}
   - component: {fileID: 8708689646001482583}
+  - component: {fileID: 4362735755899591968}
   m_Layer: 7
   m_Name: WaterAmmo
   m_TagString: Untagged
@@ -76,33 +77,33 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
+  m_Sprite: {fileID: -2413806693520163455, guid: d4555664d3eff024a8d2c9b5aeb4c53b, type: 3}
   m_Color: {r: 0.67912656, g: 0.8794109, b: 0.9150943, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 2}
+  m_Size: {x: 1, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!58 &1364938895617909275
-CircleCollider2D:
+--- !u!70 &4690307608922987509
+CapsuleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2336550799899013434}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
-  serializedVersion: 2
-  m_Radius: 0.5
+  m_Size: {x: 0.99999994, y: 0.99999994}
+  m_Direction: 0
 --- !u!50 &8860321837423340557
 Rigidbody2D:
   serializedVersion: 4
@@ -138,3 +139,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ammoSpeed: 5
   ammoLifeTime: 3
+--- !u!58 &4362735755899591968
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2336550799899013434}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.49999997

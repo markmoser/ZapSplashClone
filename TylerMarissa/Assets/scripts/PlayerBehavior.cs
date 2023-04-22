@@ -34,7 +34,7 @@ public class PlayerBehavior : MonoBehaviour
     private ButtonBehavior buttonScript;
     private CellDoorBehavior cellDoorScript;
 
-    private bool inDoorRange, touchingButton, inCellDoorRange;
+    [SerializeField]private bool inDoorRange, touchingButton, inCellDoorRange;
     public bool stunned;
 
     [SerializeField] private GameObject playerAmmo;
@@ -43,6 +43,8 @@ public class PlayerBehavior : MonoBehaviour
 
     public bool IsElePlayer;
     private bool inPlayerRange = false;
+
+    [SerializeField]private Animator anim;
 
     /// <summary>
     /// Sets bools to begin as false.
@@ -133,6 +135,7 @@ public class PlayerBehavior : MonoBehaviour
         if (touchingButton)
         {
             buttonScript.PressButton();
+            anim.SetTrigger("EleInteract");
         }
         if (inCellDoorRange)
         {
