@@ -18,7 +18,7 @@ using UnityEngine.SceneManagement;
 
 public class PlayerBehavior : MonoBehaviour
 {
-    private float movementSpeed = 5f;
+    private float movementSpeed = 10f;
     private Vector2 movement;
     private Vector2 playerMovement;
     [SerializeField] private float rotationSpeed = 2f;

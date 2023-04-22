@@ -21,13 +21,13 @@ public class ExitDoorBehavior : MonoBehaviour
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.tag == "player") {
+        if (collision.gameObject.tag == "Player") {
             requirementsText.SetActive(true);
         }
     }
     private void OnCollisionExit2D(Collision2D collision)
     {
-        if (collision.gameObject.tag == "player")
+        if (collision.gameObject.tag == "Player")
         {
             requirementsText.SetActive(false);
         }

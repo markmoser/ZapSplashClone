@@ -54,9 +54,14 @@ public class GameManager : MonoBehaviour
         buttonsPressedSlider.value = buttonsPressed;
         npcsFreedSlider.value = prisonersFreed;
 
-        if (prisonersFreed >= 8 && buttonsPressed >= 4) // && EnemiesKilled >= 0) 
+        if (prisonersFreed >= 8 && buttonsPressed >= 4 && EnemiesKilled >= 1)
         {
             exitDoorScript.OpenDoor();
+        }
+
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            Application.Quit();
         }
     }
 
