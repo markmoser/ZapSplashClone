@@ -135,7 +135,6 @@ public class PlayerBehavior : MonoBehaviour
         if (touchingButton)
         {
             buttonScript.PressButton();
-            anim.SetTrigger("EleInteract");
         }
         if (inCellDoorRange)
         {
@@ -145,6 +144,30 @@ public class PlayerBehavior : MonoBehaviour
         {
             //stunned = false;
         }
+
+        if(IsElePlayer)
+        {
+            anim.SetBool("EleInteract", true);
+            Invoke("EndEleInteractBool", 0.3f);
+        }
+        if (!IsElePlayer)
+        {
+            anim.SetBool("WaterInteract", true);
+            Invoke("EndWaterInteractBool", 0.3f);
+        }
+  
+    }
+
+    /// <summary>
+    /// Functions used to end the interacting animation
+    /// </summary>
+    private void EndEleInteractBool()
+    {
+        anim.SetBool("EleInteract", false);
+    }
+    private void EndWaterInteractBool()
+    {
+        anim.SetBool("WaterInteract", false);
     }
 
     /// <summary>

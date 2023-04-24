@@ -19,7 +19,6 @@ public class EnemyBehavior : MonoBehaviour
 
     [SerializeField] private float rateOfFire = 3f;
     [SerializeField] private float accuracy;
-    [SerializeField] private float enemyRange = 50;
     //public float SpeedOfAmmo;
 
     //public GameObject EnemyAmmo;
@@ -40,8 +39,6 @@ public class EnemyBehavior : MonoBehaviour
     {
         enemyAggro = this.gameObject.transform.GetComponentInChildren<EnemyAggroBehavior>();
         gameManager = gameController.GetComponent<GameManager>();
-
-        enemyRange = 50f;
     }
 
     //Update function checks for the enemy's death state

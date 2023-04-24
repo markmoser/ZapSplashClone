@@ -20,6 +20,8 @@ public class ButtonBehavior : MonoBehaviour
     [SerializeField] private GameObject gameController;
     private GameManager gameManager;
 
+    [SerializeField] private Animator anim;
+
     private void Start()
     {
         gameManager = gameController.GetComponent<GameManager>();
@@ -30,6 +32,7 @@ public class ButtonBehavior : MonoBehaviour
         if (!toggled) 
         {
             gameManager.CountButton();
+            anim.SetBool("isToggled", true);
         }
         toggled = true;
     }
