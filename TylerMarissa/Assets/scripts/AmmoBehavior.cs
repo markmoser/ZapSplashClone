@@ -13,10 +13,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EleAmmoBehavior : MonoBehaviour
+public class AmmoBehavior : MonoBehaviour
 {
     [SerializeField] private float ammoSpeed;
     [SerializeField] private float ammoLifeTime = 3;
+    [SerializeField] private bool isElePlayer = true;
 
     /// <summary>
     /// Update functoin moves the player's ammo and calls the destroy function 
@@ -33,11 +34,13 @@ public class EleAmmoBehavior : MonoBehaviour
     /// </summary>
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("Enemy"))
+        if (collision.gameObject.tag == "Enemy" && isElePlayer)
         {
             collision.gameObject.GetComponent<EnemyBehavior>().HitByEle = true;
-            //Destroy(gameObject);
+        }else if(collision.gameObject.tag == "Enemy" && !isElePlayer){
+            collision.gameObject.GetComponent<EnemyBehavior>().HitByWater = true;
         }
+        Destroy(gameObject);
     }
 
     /// <summary>

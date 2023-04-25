@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 2336550799899013432}
   - component: {fileID: 4690307608922987509}
   - component: {fileID: 8860321837423340557}
-  - component: {fileID: 8708689646001482583}
+  - component: {fileID: -7598867561429806022}
   m_Layer: 7
   m_Name: WaterAmmo
   m_TagString: Untagged
@@ -124,7 +124,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!114 &8708689646001482583
+--- !u!114 &-7598867561429806022
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -133,8 +133,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 2336550799899013434}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6970687cf8ee25d488eb59df265fb67e, type: 3}
+  m_Script: {fileID: 11500000, guid: b47b8240d811c964ca09449a1880fc46, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ammoSpeed: 5
+  ammoSpeed: 10
   ammoLifeTime: 3
+  isElePlayer: 0
