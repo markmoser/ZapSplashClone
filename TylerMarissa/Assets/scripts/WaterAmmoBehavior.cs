@@ -36,8 +36,8 @@ public class WaterAmmoBehavior : MonoBehaviour
         if (collision.gameObject.CompareTag("Enemy"))
         {
             collision.gameObject.GetComponent<EnemyBehavior>().HitByWater = true;
-            //Destroy(gameObject);
         }
+        Destroy(gameObject);
     }
 
     /// <summary>

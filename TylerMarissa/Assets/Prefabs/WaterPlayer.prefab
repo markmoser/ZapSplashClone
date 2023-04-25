@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6843185352399791710}
   - component: {fileID: 5048158720268117075}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: PlayerRange
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -64,7 +64,7 @@ GameObject:
   - component: {fileID: 5985238313781061079}
   - component: {fileID: 5985238313781061077}
   - component: {fileID: 5985238313781061076}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: WaterPlayer
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -275,7 +275,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7752471655456705375}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: AmmoSpawn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
