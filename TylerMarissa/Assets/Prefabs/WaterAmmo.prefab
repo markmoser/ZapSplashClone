@@ -13,7 +13,6 @@ GameObject:
   - component: {fileID: 4690307608922987509}
   - component: {fileID: 8860321837423340557}
   - component: {fileID: 8708689646001482583}
-  - component: {fileID: 4362735755899591968}
   m_Layer: 7
   m_Name: WaterAmmo
   m_TagString: Untagged
@@ -95,14 +94,14 @@ CapsuleCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2336550799899013434}
-  m_Enabled: 0
+  m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_Size: {x: 0.99999994, y: 0.99999994}
+  m_Offset: {x: 0, y: 1.2}
+  m_Size: {x: 1, y: 2}
   m_Direction: 0
 --- !u!50 &8860321837423340557
 Rigidbody2D:
@@ -139,19 +138,3 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ammoSpeed: 5
   ammoLifeTime: 3
---- !u!58 &4362735755899591968
-CircleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2336550799899013434}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  serializedVersion: 2
-  m_Radius: 0.49999997
