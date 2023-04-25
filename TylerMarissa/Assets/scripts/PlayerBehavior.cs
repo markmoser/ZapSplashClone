@@ -20,6 +20,7 @@ public class PlayerBehavior : MonoBehaviour
 {
     private float movementSpeed = 7f;
     private Vector2 movement;
+    private Vector2 rotation;
     private Vector2 playerMovement;
     [SerializeField] private float rotationSpeed = 2f;
     [SerializeField] private Rigidbody2D rb2D;
@@ -28,7 +29,7 @@ public class PlayerBehavior : MonoBehaviour
 
     private InputActionAsset inputAsset;
     private InputActionMap inputMap;
-    private InputAction move, interact, attack, resetLevel;
+    private InputAction move, interact, attack, resetLevel, aim;
 
     private DoorBehavior doorScript;
     private ButtonBehavior buttonScript;
@@ -77,6 +78,7 @@ public class PlayerBehavior : MonoBehaviour
         interact = inputMap.FindAction("Interact");
         attack = inputMap.FindAction("Attack");
         resetLevel = inputMap.FindAction("ResetLevel");
+        aim = inputMap.FindAction("Aim");
 
         //sets the movement velocity for the players
         move.performed += ctx => movement = ctx.ReadValue<Vector2>();
@@ -90,6 +92,10 @@ public class PlayerBehavior : MonoBehaviour
 
         //reset level
         resetLevel.performed += ctx => ResetLevel();
+
+        //rotates player
+        aim.performed += ctx => rotation = ctx.ReadValue<Vector2>();
+        aim.canceled += ctx => rotation = Vector2.zero;
 
     }
 
@@ -118,6 +124,14 @@ public class PlayerBehavior : MonoBehaviour
                 Quaternion targetRotation = Quaternion.LookRotation(transform.forward, movement);
                 Quaternion rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
                 rb2D.MoveRotation(rotation);
+            }
+
+            //rotation during aiming
+            if(movement == Vector2.zero && rotation != Vector2.zero)
+            {
+                Quaternion targetRotation1 = Quaternion.LookRotation(transform.forward, rotation);
+                Quaternion rotation1 = Quaternion.RotateTowards(transform.rotation, targetRotation1, rotationSpeed * Time.deltaTime);
+                rb2D.MoveRotation(rotation1);
             }
         }
     }
