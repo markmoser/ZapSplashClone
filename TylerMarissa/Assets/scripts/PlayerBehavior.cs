@@ -129,7 +129,7 @@ public class PlayerBehavior : MonoBehaviour
                 rb2D.MoveRotation(rotation);
             }
             
-            if(movement == Vector2.zero)
+            if(movement == Vector2.zero && rotation != Vector2.zero)
             {
                 Quaternion targetRotation1 = Quaternion.LookRotation(transform.forward, rotation);
                 Quaternion rotation1 = Quaternion.RotateTowards(transform.rotation, targetRotation1, rotationSpeed1 * Time.deltaTime);
