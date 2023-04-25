@@ -21,8 +21,8 @@ public class PlayerBehavior : MonoBehaviour
     private float movementSpeed = 7f;
     private Vector2 movement;
     private Vector2 rotation;
-    private Vector2 playerMovement;
-    [SerializeField] private float rotationSpeed = 2f;
+    [SerializeField] private float rotationSpeed;
+    [SerializeField] private float rotationSpeed1;
     [SerializeField] private Rigidbody2D rb2D;
 
     private GameObject otherPlayer;
@@ -119,21 +119,23 @@ public class PlayerBehavior : MonoBehaviour
             Vector2 movementVelocity = new Vector2(movement.x, movement.y) * movementSpeed * Time.deltaTime;
             transform.Translate(movementVelocity, Space.World);
 
+            
+
             //rotation of the player during movement
-            if(movement != Vector2.zero)
+            if (movement != Vector2.zero)
             {
                 Quaternion targetRotation = Quaternion.LookRotation(transform.forward, movement);
                 Quaternion rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
                 rb2D.MoveRotation(rotation);
             }
-
-            //rotation during aiming
-            if(movement == Vector2.zero && rotation != Vector2.zero)
+            
+            if(movement == Vector2.zero)
             {
                 Quaternion targetRotation1 = Quaternion.LookRotation(transform.forward, rotation);
-                Quaternion rotation1 = Quaternion.RotateTowards(transform.rotation, targetRotation1, rotationSpeed * Time.deltaTime);
+                Quaternion rotation1 = Quaternion.RotateTowards(transform.rotation, targetRotation1, rotationSpeed1 * Time.deltaTime);
                 rb2D.MoveRotation(rotation1);
             }
+            
         }
     }
 
