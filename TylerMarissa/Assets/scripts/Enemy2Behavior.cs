@@ -14,7 +14,7 @@ public class Enemy2Behavior : MonoBehaviour
     [SerializeField] private float turnSpeed = 10f;
     [SerializeField] private GameObject rayStart;
     [SerializeField] private float detectionRadius = 100f;
-    private GameObject targetPlayer;
+    private bool eleHiding, waterHiding;
     /// <summary>
     /// Sets Refrences to their coresponding asset
     /// </summary>
@@ -22,7 +22,6 @@ public class Enemy2Behavior : MonoBehaviour
     {
         gameManager = gameController.GetComponent<GameManager>();
         StartCoroutine(Shooting());
-        targetPlayer = ClosestPlayer();
     }
 
     //Update function checks for the enemy's death state
@@ -34,32 +33,21 @@ public class Enemy2Behavior : MonoBehaviour
             gameManager.CountEnemy();
         }
         //figure out the best way to detect closest player :)
-
-        PointTowardsPlayer(targetPlayer);
+        PointTowardsPlayer(ClosestPlayer());
     }
     IEnumerator Shooting() {
         while (true) {
             RaycastHit2D hit = Physics2D.Raycast(rayStart.transform.position, transform.TransformDirection(Vector2.up), detectionRadius);
-            if (hit.collider.name == "WaterPlayer(Clone)")
+            if (hit.collider.tag == "Player")
             {
                 Instantiate(ammo, ammoSpawn.transform.position, transform.rotation);
-            }
-            else {
-                targetPlayer = GameObject.Find("ElectricPlayer(Clone)");
-            }
-            if (hit.collider.name == "ElectricPlayer(Clone)")
-            {
-                Instantiate(ammo, ammoSpawn.transform.position, transform.rotation);
-            }
-            else
-            {
-                targetPlayer = GameObject.Find("WaterPlayer(Clone)");
             }
             //print(hit.collider.name);
             yield return new WaitForSeconds(fireRate);
         }
     }
-    private void PointTowardsPlayer(GameObject player) {
+    private void PointTowardsPlayer(GameObject player)
+    {
         Vector3 vectorToTarget = player.transform.position - transform.position;
         float angle = Mathf.Atan2(vectorToTarget.y, vectorToTarget.x) * Mathf.Rad2Deg + 270f;
         Quaternion ang = Quaternion.AngleAxis(angle, Vector3.forward);
@@ -73,7 +61,7 @@ public class Enemy2Behavior : MonoBehaviour
 
         GameObject waterPlayer = GameObject.Find("WaterPlayer(Clone)");
         float waterPlayerDistance = Mathf.Pow(Mathf.Abs(transform.position.x - waterPlayer.transform.position.x), 2) +
-                                  Mathf.Pow(Mathf.Abs(transform.position.y - waterPlayer.transform.position.y), 2);
+                                    Mathf.Pow(Mathf.Abs(transform.position.y - waterPlayer.transform.position.y), 2);
         waterPlayerDistance = Mathf.Sqrt(waterPlayerDistance);
         if (elePlayerDistance < waterPlayerDistance)
         {
