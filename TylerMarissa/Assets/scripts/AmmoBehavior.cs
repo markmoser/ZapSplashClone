@@ -1,10 +1,10 @@
 /**********************************************************************************
 
-// File Name :         WaterAmmoBehavior.cs
+// File Name :         EleAmmoBehavior.cs
 // Author :            Marissa Moser
 // Creation Date :     April 13, 2023
 //
-// Brief Description : Code for the Water player's ammo. It moves and destroys
+// Brief Description : Code for the Electric player's ammo. It moves and destroys
         the ammo, and does "damage" when it hist the enemy.
 
 **********************************************************************************/
@@ -13,10 +13,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class WaterAmmoBehavior : MonoBehaviour
+public class AmmoBehavior : MonoBehaviour
 {
     [SerializeField] private float ammoSpeed;
     [SerializeField] private float ammoLifeTime = 3;
+    [SerializeField] private bool isElePlayer = true;
 
     /// <summary>
     /// Update functoin moves the player's ammo and calls the destroy function 
@@ -33,9 +34,11 @@ public class WaterAmmoBehavior : MonoBehaviour
     /// </summary>
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("Enemy"))
+        if (collision.gameObject.tag == "Enemy" && isElePlayer)
         {
-            collision.gameObject.GetComponent<EnemyBehavior>().HitByWater = true;
+            collision.gameObject.GetComponent<Enemy2Behavior>().HitByEle = true;
+        }else if(collision.gameObject.tag == "Enemy" && !isElePlayer){
+            collision.gameObject.GetComponent<Enemy2Behavior>().HitByWater = true;
         }
         Destroy(gameObject);
     }
