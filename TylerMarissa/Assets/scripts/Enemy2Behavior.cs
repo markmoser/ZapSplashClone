@@ -30,8 +30,10 @@ public class Enemy2Behavior : MonoBehaviour
             Destroy(gameObject);
             gameManager.CountEnemy();
         }
+        //figure out the best way to detect closest player :)
+        print(ClosestPlayer()); 
         GameObject player = GameObject.Find("ElectricPlayer(Clone)");
-        PointTowardsPlayer(player);
+        PointTowardsPlayer(ClosestPlayer());
     }
     IEnumerator Shooting() {
         while (true) {
@@ -39,7 +41,7 @@ public class Enemy2Behavior : MonoBehaviour
             if (hit.collider.name == "WaterPlayer(Clone)" || hit.collider.name == "ElectricPlayer(Clone)") {
                 Instantiate(ammo, ammoSpawn.transform.position, transform.rotation);
             }
-            print(hit.collider.name);
+            //print(hit.collider.name);
             yield return new WaitForSeconds(fireRate);
         }
     }
@@ -49,4 +51,22 @@ public class Enemy2Behavior : MonoBehaviour
         Quaternion ang = Quaternion.AngleAxis(angle, Vector3.forward);
         transform.rotation = Quaternion.Slerp(transform.rotation, ang, Time.deltaTime * turnSpeed);
     }
+    private GameObject ClosestPlayer() {
+        GameObject elePlayer = GameObject.Find("ElectricPlayer(Clone)");
+        float elePlayerDistance = Mathf.Pow(Mathf.Abs(transform.position.x - elePlayer.transform.position.x), 2) +
+                                  Mathf.Pow(Mathf.Abs(transform.position.y - elePlayer.transform.position.y), 2);
+        elePlayerDistance = Mathf.Sqrt(elePlayerDistance);
+
+        GameObject waterPlayer = GameObject.Find("WaterPlayer(Clone)");
+        float waterPlayerDistance = Mathf.Pow(Mathf.Abs(transform.position.x - waterPlayer.transform.position.x), 2) +
+                                  Mathf.Pow(Mathf.Abs(transform.position.y - waterPlayer.transform.position.y), 2);
+        waterPlayerDistance = Mathf.Sqrt(waterPlayerDistance);
+        if (elePlayerDistance < waterPlayerDistance)
+        {
+            return elePlayer;
+        }
+        else {
+            return waterPlayer;
+        }
+      }
 }

@@ -36,9 +36,9 @@ public class AmmoBehavior : MonoBehaviour
     {
         if (collision.gameObject.tag == "Enemy" && isElePlayer)
         {
-            collision.gameObject.GetComponent<EnemyBehavior>().HitByEle = true;
+            collision.gameObject.GetComponent<Enemy2Behavior>().HitByEle = true;
         }else if(collision.gameObject.tag == "Enemy" && !isElePlayer){
-            collision.gameObject.GetComponent<EnemyBehavior>().HitByWater = true;
+            collision.gameObject.GetComponent<Enemy2Behavior>().HitByWater = true;
         }
         Destroy(gameObject);
     }
