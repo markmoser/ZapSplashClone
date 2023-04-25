@@ -13,6 +13,8 @@ public class Enemy2Behavior : MonoBehaviour
     [SerializeField] private float fireRate = 0.5f;
     [SerializeField] private float turnSpeed = 10f;
     [SerializeField] private GameObject rayStart;
+    [SerializeField] private float detectionRadius = 100f;
+    private GameObject targetPlayer;
     /// <summary>
     /// Sets Refrences to their coresponding asset
     /// </summary>
@@ -20,6 +22,7 @@ public class Enemy2Behavior : MonoBehaviour
     {
         gameManager = gameController.GetComponent<GameManager>();
         StartCoroutine(Shooting());
+        targetPlayer = ClosestPlayer();
     }
 
     //Update function checks for the enemy's death state
@@ -31,15 +34,26 @@ public class Enemy2Behavior : MonoBehaviour
             gameManager.CountEnemy();
         }
         //figure out the best way to detect closest player :)
-        print(ClosestPlayer()); 
-        GameObject player = GameObject.Find("ElectricPlayer(Clone)");
-        PointTowardsPlayer(ClosestPlayer());
+
+        PointTowardsPlayer(targetPlayer);
     }
     IEnumerator Shooting() {
         while (true) {
-            RaycastHit2D hit = Physics2D.Raycast(rayStart.transform.position, transform.TransformDirection(Vector2.up), 100f);
-            if (hit.collider.name == "WaterPlayer(Clone)" || hit.collider.name == "ElectricPlayer(Clone)") {
+            RaycastHit2D hit = Physics2D.Raycast(rayStart.transform.position, transform.TransformDirection(Vector2.up), detectionRadius);
+            if (hit.collider.name == "WaterPlayer(Clone)")
+            {
                 Instantiate(ammo, ammoSpawn.transform.position, transform.rotation);
+            }
+            else {
+                targetPlayer = GameObject.Find("ElectricPlayer(Clone)");
+            }
+            if (hit.collider.name == "ElectricPlayer(Clone)")
+            {
+                Instantiate(ammo, ammoSpawn.transform.position, transform.rotation);
+            }
+            else
+            {
+                targetPlayer = GameObject.Find("WaterPlayer(Clone)");
             }
             //print(hit.collider.name);
             yield return new WaitForSeconds(fireRate);
@@ -65,8 +79,6 @@ public class Enemy2Behavior : MonoBehaviour
         {
             return elePlayer;
         }
-        else {
-            return waterPlayer;
-        }
-      }
+        return waterPlayer;
+    }
 }
