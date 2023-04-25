@@ -45,7 +45,8 @@ public class PlayerBehavior : MonoBehaviour
     public bool IsElePlayer;
     private bool inPlayerRange = false;
 
-    [SerializeField]private Animator anim;
+    [SerializeField] private Animator anim;
+    [SerializeField] private ParticleSystem ps;
 
     /// <summary>
     /// Sets bools to begin as false.
@@ -137,6 +138,23 @@ public class PlayerBehavior : MonoBehaviour
     }
 
     /// <summary>
+    ///Update function checks if player is stunned and plays particals if they are 
+    /// </summary>
+    private void Update()
+    {
+        if(stunned)
+        {
+            var em = ps.emission;
+            em.enabled = true;
+        }
+        else
+        {
+            var em = ps.emission;
+            em.enabled = false;
+        }
+    }
+
+    /// <summary>
     /// When the player presses A to interact, does a variety of actions
     ///     depending on the bools that are true.
     /// </summary>
@@ -189,7 +207,10 @@ public class PlayerBehavior : MonoBehaviour
     /// </summary>
     private void Attack()
     {
-        Instantiate(playerAmmo, ammoSpawn.transform.position, transform.rotation);
+        if(!stunned)
+        {
+            Instantiate(playerAmmo, ammoSpawn.transform.position, transform.rotation);
+        }
     }
 
     /// <summary>
