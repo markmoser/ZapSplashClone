@@ -243,7 +243,7 @@ public class PlayerBehavior : MonoBehaviour
             inCellDoorRange = true;
             cellDoorScript = collision.gameObject.GetComponent<CellDoorBehavior>();
         }
-        if (collision.gameObject.tag == "Player")
+        if (collision.gameObject.tag == "Bullet")
         {
             //collision.gameObject.GetComponent<PlayerBehavior>().inPlayerRange = true;
         }
@@ -266,9 +266,19 @@ public class PlayerBehavior : MonoBehaviour
         {
             inCellDoorRange = false;
         }
-        if (collision.gameObject.tag == "Player")
+        if (collision.gameObject.tag == "Bullet")
         {
             //collision.gameObject.GetComponent<PlayerBehavior>().inPlayerRange = false;
+        }
+    }
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag == "Bullet") {
+            stunned = true;
+        }
+        if (collision.gameObject.tag == "Player")
+        {
+            stunned = false;
         }
     }
 
