@@ -9,6 +9,7 @@ TagManager:
   - CellDoor
   - Enemy
   - EndDetector
+  - Bullet
   layers:
   - Default
   - TransparentFX
