@@ -173,7 +173,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b19bbf1cab5dc9d47ac065fc90fb0e26, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rotationSpeed: 900
+  rotationSpeed: 1200
+  rotationSpeed1: 700
   rb2D: {fileID: 7168732153780992969}
   inDoorRange: 0
   touchingButton: 0

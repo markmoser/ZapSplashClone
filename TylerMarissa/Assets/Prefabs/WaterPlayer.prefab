@@ -192,6 +192,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rotationSpeed: 1200
+  rotationSpeed1: 700
   rb2D: {fileID: 5985238313781061099}
   inDoorRange: 0
   touchingButton: 0

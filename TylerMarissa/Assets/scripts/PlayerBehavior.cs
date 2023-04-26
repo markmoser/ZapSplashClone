@@ -119,7 +119,6 @@ public class PlayerBehavior : MonoBehaviour
             Vector2 movementVelocity = new Vector2(movement.x, movement.y) * movementSpeed * Time.deltaTime;
             transform.Translate(movementVelocity, Space.World);
 
-            
 
             //rotation of the player during movement. Only if movement is not 0 and rotation is 0
             //when aim stick is moved ever
@@ -129,13 +128,16 @@ public class PlayerBehavior : MonoBehaviour
                 Quaternion rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
                 rb2D.MoveRotation(rotation);
             }
-            if(movement == Vector2.zero)
+
+            
+            if (rotation != Vector2.zero)
             {
                 Quaternion targetRotation1 = Quaternion.LookRotation(transform.forward, rotation);
                 Quaternion rotation1 = Quaternion.RotateTowards(transform.rotation, targetRotation1, rotationSpeed1 * Time.deltaTime);
                 rb2D.MoveRotation(rotation1);
             }
             
+
         }
     }
 
