@@ -15,10 +15,19 @@ using UnityEngine;
 public class CellDoorBehavior : MonoBehaviour
 {
     [SerializeField] private GameObject NPCinCell;
+    [SerializeField] private Animator anim;
+
     private PrisonerBehavior prisonerScript;
-    public void OpenDoor() {
-        gameObject.SetActive(false);
-        prisonerScript = NPCinCell.GetComponent<PrisonerBehavior>();
-        prisonerScript.FreePrisoner();
+
+    public void OpenDoor() 
+    {
+        //gameObject.SetActive(false);
+        anim.SetBool("DoorOpen", true);
+        if(gameObject.GetComponent<BoxCollider2D>().enabled)
+        {
+            gameObject.GetComponent<BoxCollider2D>().enabled = !gameObject.GetComponent<BoxCollider2D>().enabled;
+            prisonerScript = NPCinCell.GetComponent<PrisonerBehavior>();
+            prisonerScript.FreePrisoner();
+        }
     }
 }

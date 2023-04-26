@@ -6,6 +6,7 @@ public class Enemy2Behavior : MonoBehaviour
     
     private GameManager gameManager;
     private EnemyEyeBehavior eyeScript;
+
     public bool HitByEle = false;
     public bool HitByWater = false;
    
@@ -14,9 +15,14 @@ public class Enemy2Behavior : MonoBehaviour
     [SerializeField] private GameObject ammoSpawn;
     [SerializeField] private GameObject eye;
     [SerializeField] private GameObject rayStart;
+    [SerializeField] private GameObject puddle;
+    [SerializeField] private GameObject sparks;
+
+
     [SerializeField] private float fireRate = 0.5f;
     [SerializeField] private float turnSpeed = 10f;
     [SerializeField] public float detectionRadius = 100f;
+
     [SerializeField] public LayerMask layerToIgnore;
 
     /// <summary>
@@ -32,11 +38,21 @@ public class Enemy2Behavior : MonoBehaviour
     //Update function checks for the enemy's death state
     private void Update()
     {
+        if(HitByEle)
+        {
+            sparks.SetActive(true);
+        }
+        if(HitByWater)
+        {
+            puddle.SetActive(true);
+        }
+
         if (HitByEle && HitByWater)
         {
             Destroy(gameObject);
             gameManager.CountEnemy();
         }
+
         PointTowardsPlayer(eyeScript.GetTargetPlayer());
     }
     IEnumerator Shooting() {
