@@ -13,6 +13,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
@@ -24,6 +25,9 @@ public class GameManager : MonoBehaviour
     public int buttonsPressed = 0;
     public int EnemiesKilled = 0;
     public int prisonersFreed = 0;
+
+    public bool elePlayerStunned = false;
+    public bool waterPlayerStunned = false;
 
     public ExitDoorBehavior exitDoorScript;
 
@@ -58,7 +62,12 @@ public class GameManager : MonoBehaviour
         {
             exitDoorScript.OpenDoor();
         }
-
+        PlayerBehavior elePlayerScript = GameObject.Find("ElectricPlayer(Clone)").GetComponent<PlayerBehavior>();
+        PlayerBehavior waterPlayerScript = GameObject.Find("WaterPlayer(Clone)").GetComponent<PlayerBehavior>();
+        print(elePlayerScript.stunned + " " + waterPlayerScript.stunned);
+        if (elePlayerScript.stunned && waterPlayerScript.stunned) {
+            SceneManager.LoadScene(3);
+        }
     }
 
     /// <summary>

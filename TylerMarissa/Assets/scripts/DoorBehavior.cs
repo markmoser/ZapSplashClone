@@ -28,10 +28,17 @@ public class DoorBehavior : MonoBehaviour
         camScript = GameObject.Find("Main Camera").GetComponent<CameraBehavior>();
     }
     public void GoThroughDoor(GameObject player, GameObject otherPlayer) {
-        playerScript = player.GetComponent<PlayerBehavior>();
-        playerScript.MovePlayer(targetLoc1);
-        playerScript = otherPlayer.GetComponent<PlayerBehavior>();
-        playerScript.MovePlayer(targetLoc2);
-        camScript.MoveCamera(20f * CamTargetLocX, 12f * CamTargetLocY);
+        if (player.GetComponent<PlayerBehavior>().stunned || otherPlayer.GetComponent<PlayerBehavior>().stunned)
+        {
+            // display "HEY dont leave them behind :("
+        }
+        else {
+            playerScript = player.GetComponent<PlayerBehavior>();
+            playerScript.MovePlayer(targetLoc1);
+            playerScript = otherPlayer.GetComponent<PlayerBehavior>();
+            playerScript.MovePlayer(targetLoc2);
+            camScript.MoveCamera(20f * CamTargetLocX, 12f * CamTargetLocY);
+        }
+        
     }
 }

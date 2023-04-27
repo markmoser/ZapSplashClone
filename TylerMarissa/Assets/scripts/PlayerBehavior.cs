@@ -35,11 +35,11 @@ public class PlayerBehavior : MonoBehaviour
     private ButtonBehavior buttonScript;
     private CellDoorBehavior cellDoorScript;
 
-    [SerializeField]private bool inDoorRange, touchingButton, inCellDoorRange;
+    [SerializeField] private bool inDoorRange, touchingButton, inCellDoorRange;
     public bool stunned;
 
     [SerializeField] private GameObject playerAmmo;
-    public float ammoSpeed;
+    
     [SerializeField] private GameObject ammoSpawn;
 
     public bool IsElePlayer;
@@ -113,7 +113,7 @@ public class PlayerBehavior : MonoBehaviour
     /// </summary>
     void FixedUpdate()
     {
-        if(!stunned == true)
+        if(!stunned)
         {
             //movement
             Vector2 movementVelocity = new Vector2(movement.x, movement.y) * movementSpeed * Time.deltaTime;
@@ -245,10 +245,6 @@ public class PlayerBehavior : MonoBehaviour
             inCellDoorRange = true;
             cellDoorScript = collision.gameObject.GetComponent<CellDoorBehavior>();
         }
-        if (collision.gameObject.tag == "Bullet")
-        {
-            //collision.gameObject.GetComponent<PlayerBehavior>().inPlayerRange = true;
-        }
     }
 
     /// <summary>
@@ -267,10 +263,6 @@ public class PlayerBehavior : MonoBehaviour
         if (collision.gameObject.tag == "CellDoor")
         {
             inCellDoorRange = false;
-        }
-        if (collision.gameObject.tag == "Bullet")
-        {
-            //collision.gameObject.GetComponent<PlayerBehavior>().inPlayerRange = false;
         }
     }
     private void OnCollisionEnter2D(Collision2D collision)
