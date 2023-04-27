@@ -15,6 +15,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class PlayerBehavior : MonoBehaviour
 {
@@ -29,7 +30,7 @@ public class PlayerBehavior : MonoBehaviour
 
     private InputActionAsset inputAsset;
     private InputActionMap inputMap;
-    private InputAction move, interact, attack, resetLevel, aim;
+    private InputAction move, interact, attack, pause, aim;
 
     private DoorBehavior doorScript;
     private ButtonBehavior buttonScript;
@@ -47,6 +48,7 @@ public class PlayerBehavior : MonoBehaviour
 
     [SerializeField] private Animator anim;
     [SerializeField] private ParticleSystem ps;
+    [SerializeField] private Image pauseMenu;
 
     /// <summary>
     /// Sets bools to begin as false.
@@ -78,7 +80,7 @@ public class PlayerBehavior : MonoBehaviour
         move = inputMap.FindAction("Move");
         interact = inputMap.FindAction("Interact");
         attack = inputMap.FindAction("Attack");
-        resetLevel = inputMap.FindAction("ResetLevel");
+        pause = inputMap.FindAction("ResetLevel");
         aim = inputMap.FindAction("Aim");
 
         //sets the movement velocity for the players
@@ -92,7 +94,7 @@ public class PlayerBehavior : MonoBehaviour
         attack.performed += ctx => Attack();
 
         //reset level
-        resetLevel.performed += ctx => ResetLevel();
+        pause.performed += ctx => OpenPauseMenu();
 
         //rotates player
         aim.performed += ctx => rotation = ctx.ReadValue<Vector2>();
@@ -214,11 +216,16 @@ public class PlayerBehavior : MonoBehaviour
     }
 
     /// <summary>
-    /// Resets the level back to the begginning
+    /// Opens the pause menu when player presses the start button
     /// </summary>
-    private void ResetLevel()
+    private void OpenPauseMenu()
     {
-        SceneManager.LoadScene(1);
+        if(!pauseMenu.enabled)
+        {
+            pauseMenu.enabled = !pauseMenu.enabled;
+            //stop players and enemies 
+        }
+
     }
 
     /// <summary>
