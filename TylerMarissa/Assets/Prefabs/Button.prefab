@@ -116,6 +116,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameController: {fileID: 0}
+  anim: {fileID: 2224952258915638202}
 --- !u!95 &2224952258915638202
 Animator:
   serializedVersion: 4
