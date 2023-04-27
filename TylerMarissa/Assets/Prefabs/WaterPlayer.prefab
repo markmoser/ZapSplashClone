@@ -150,11 +150,11 @@ MonoBehaviour:
   inCellDoorRange: 0
   stunned: 0
   playerAmmo: {fileID: 2336550799899013434, guid: f6c71c1227f9ec64ca81bebd9fa24989, type: 3}
-  ammoSpeed: 0
   ammoSpawn: {fileID: 6275426720333543594}
   IsElePlayer: 0
   anim: {fileID: 5985238313781061077}
   ps: {fileID: -3897729056296188539}
+  pauseMenu: {fileID: 0}
 --- !u!114 &5985238313781061079
 MonoBehaviour:
   m_ObjectHideFlags: 0
