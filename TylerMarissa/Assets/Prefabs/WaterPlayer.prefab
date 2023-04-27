@@ -12,8 +12,8 @@ GameObject:
   - component: {fileID: 5985238313781061097}
   - component: {fileID: 5985238313781061099}
   - component: {fileID: 6647637790589671840}
-  - component: {fileID: 5985238313781061098}
   - component: {fileID: 5985238313781061079}
+  - component: {fileID: -8603374120627263065}
   - component: {fileID: 5985238313781061077}
   - component: {fileID: 8462741860060198139}
   - component: {fileID: -3897729056296188539}
@@ -130,31 +130,6 @@ CapsuleCollider2D:
   m_Offset: {x: 0, y: -0.075}
   m_Size: {x: 0.8, y: 0.45}
   m_Direction: 1
---- !u!114 &5985238313781061098
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5985238313781061101}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b19bbf1cab5dc9d47ac065fc90fb0e26, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  rotationSpeed: 1200
-  rotationSpeed1: 700
-  rb2D: {fileID: 5985238313781061099}
-  inDoorRange: 0
-  touchingButton: 0
-  inCellDoorRange: 0
-  stunned: 0
-  playerAmmo: {fileID: 2336550799899013434, guid: f6c71c1227f9ec64ca81bebd9fa24989, type: 3}
-  ammoSpawn: {fileID: 6275426720333543594}
-  IsElePlayer: 0
-  anim: {fileID: 5985238313781061077}
-  ps: {fileID: -3897729056296188539}
-  pauseMenu: {fileID: 0}
 --- !u!114 &5985238313781061079
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -185,6 +160,31 @@ MonoBehaviour:
   m_DefaultActionMap: PlayerActions
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
+--- !u!114 &-8603374120627263065
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5985238313781061101}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b19bbf1cab5dc9d47ac065fc90fb0e26, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rotationSpeed: 0
+  rotationSpeed1: 0
+  rb2D: {fileID: 5985238313781061099}
+  inDoorRange: 0
+  touchingButton: 0
+  inCellDoorRange: 0
+  stunned: 0
+  playerAmmo: {fileID: 2336550799899013434, guid: f6c71c1227f9ec64ca81bebd9fa24989, type: 3}
+  ammoSpawn: {fileID: 0}
+  IsElePlayer: 0
+  anim: {fileID: 5985238313781061077}
+  ps: {fileID: -3897729056296188539}
+  pauseMenu: {fileID: 0}
 --- !u!95 &5985238313781061077
 Animator:
   serializedVersion: 4

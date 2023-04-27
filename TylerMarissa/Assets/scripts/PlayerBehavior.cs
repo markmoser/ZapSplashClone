@@ -48,7 +48,7 @@ public class PlayerBehavior : MonoBehaviour
 
     [SerializeField] private Animator anim;
     [SerializeField] private ParticleSystem ps;
-    [SerializeField] private Image pauseMenu;
+    //[SerializeField] private GameObject pauseMenu;
 
     /// <summary>
     /// Sets bools to begin as false.
@@ -94,7 +94,7 @@ public class PlayerBehavior : MonoBehaviour
         attack.performed += ctx => Attack();
 
         //reset level
-        pause.performed += ctx => OpenPauseMenu();
+        //pause.performed += ctx => OpenPauseMenu();
 
         //rotates player
         aim.performed += ctx => rotation = ctx.ReadValue<Vector2>();
@@ -218,15 +218,15 @@ public class PlayerBehavior : MonoBehaviour
     /// <summary>
     /// Opens the pause menu when player presses the start button
     /// </summary>
+    /*
     private void OpenPauseMenu()
     {
-        if(!pauseMenu.enabled)
+        if(!pauseMenu.activeSelf)
         {
-            pauseMenu.enabled = !pauseMenu.enabled;
+            pauseMenu.SetActive(true);
             //stop players and enemies 
         }
-
-    }
+    }*/
 
     /// <summary>
     /// Sets bools for the Interact action. 
