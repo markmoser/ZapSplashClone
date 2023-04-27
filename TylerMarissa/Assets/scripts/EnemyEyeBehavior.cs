@@ -6,6 +6,7 @@ public class EnemyEyeBehavior : MonoBehaviour
 {
     [SerializeField] private GameObject enemy;
     private Enemy2Behavior enemyScript;
+    private PlayerBehavior playerScript;
     void Start()
     {
         enemyScript = enemy.GetComponent<Enemy2Behavior>();
@@ -58,7 +59,8 @@ public class EnemyEyeBehavior : MonoBehaviour
     }
     private bool CanSeePlayer(GameObject player) {
         RaycastHit2D hit = Physics2D.Raycast(transform.position, transform.TransformDirection(Vector2.up), enemyScript.detectionRadius, ~enemyScript.layerToIgnore);
-        if (hit.collider.tag == "Player")
+        //print(hit.collider.name);
+        if (hit.collider.tag == "Player" && hit.collider.GetComponent<PlayerBehavior>().stunned == false)
         {
             return true;
         }

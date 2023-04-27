@@ -52,7 +52,6 @@ public class Enemy2Behavior : MonoBehaviour
             Destroy(gameObject);
             gameManager.CountEnemy();
         }
-
         PointTowardsPlayer(eyeScript.GetTargetPlayer());
     }
     IEnumerator Shooting() {
