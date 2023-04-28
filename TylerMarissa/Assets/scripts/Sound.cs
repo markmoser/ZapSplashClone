@@ -1,3 +1,13 @@
+/**********************************************************************************
+
+// File Name :         Sound.cs
+// Author :            Marissa Moser
+// Creation Date :     April 27, 2023
+//
+// Brief Description : Class for the Sound effects.
+
+**********************************************************************************/
+
 using UnityEngine.Audio;
 using UnityEngine;
 
