@@ -15,7 +15,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
-//tinyChange.GitHub();
+
 public class GameManager : MonoBehaviour
 {
     public GameObject ElePlayer;
