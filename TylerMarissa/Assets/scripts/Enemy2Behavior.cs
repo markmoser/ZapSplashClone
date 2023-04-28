@@ -41,16 +41,19 @@ public class Enemy2Behavior : MonoBehaviour
         if(HitByEle)
         {
             sparks.SetActive(true);
+            FindObjectOfType<AudioManager>().Play("enemyHit");
         }
         if(HitByWater)
         {
             puddle.SetActive(true);
+            FindObjectOfType<AudioManager>().Play("enemyHit");
         }
 
         if (HitByEle && HitByWater)
         {
             Destroy(gameObject);
             gameManager.CountEnemy();
+            FindObjectOfType<AudioManager>().Play("enemyDeath");
         }
         PointTowardsPlayer(eyeScript.GetTargetPlayer());
     }
@@ -61,6 +64,7 @@ public class Enemy2Behavior : MonoBehaviour
             if (hit.collider.tag == "Player")
             {
                 Instantiate(ammo, ammoSpawn.transform.position, transform.rotation);
+                FindObjectOfType<AudioManager>().Play("enemyShooting");
             }
             yield return new WaitForSeconds(fireRate);
         }

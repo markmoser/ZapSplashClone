@@ -19,6 +19,7 @@ public class ButtonBehavior : MonoBehaviour
 
     [SerializeField] private GameObject gameController;
     private GameManager gameManager;
+    [SerializeField] private Animator anim;
 
     //[SerializeField] private Animator anim ;
 
@@ -32,7 +33,8 @@ public class ButtonBehavior : MonoBehaviour
         if (!toggled) 
         {
             gameManager.CountButton();
-            //anim.SetBool("isToggled", true);
+            FindObjectOfType<AudioManager>().Play("buttonOff");
+            anim.SetBool("isToggled", true);
         }
         toggled = true;
     }
