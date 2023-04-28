@@ -112,7 +112,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 2
+  m_SortingOrder: 10
   m_Sprite: {fileID: 21300000, guid: 2bd20c1386a93a14397440d82e306b4b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -181,11 +181,11 @@ MonoBehaviour:
   inCellDoorRange: 0
   stunned: 0
   playerAmmo: {fileID: 2336550799899013434, guid: b6a0a77e03b12fa4285ee806d4f06635, type: 3}
-  ammoSpeed: 0
   ammoSpawn: {fileID: 3871549360231501959}
   IsElePlayer: 1
   anim: {fileID: 733004896101543540}
   ps: {fileID: -7731144284539987061}
+  pauseMenu: {fileID: 0}
 --- !u!114 &7168732153780992965
 MonoBehaviour:
   m_ObjectHideFlags: 0
