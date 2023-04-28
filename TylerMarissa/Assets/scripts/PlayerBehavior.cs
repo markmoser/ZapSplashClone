@@ -270,12 +270,71 @@ public class PlayerBehavior : MonoBehaviour
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.tag == "Bullet") {
+        if (collision.gameObject.tag == "Bullet")
+        {
+            if (!stunned)
+            {
+                FindObjectOfType<AudioManager>().Play("stunned");
+            }
             stunned = true;
         }
         if (collision.gameObject.tag == "Player")
         {
+            if (stunned)
+            {
+                FindObjectOfType<AudioManager>().Play("unstunned");
+            }
             stunned = false;
+        }
+    }
+
+    /// <summary>
+    /// Determines which lpayer this script is on, and then plays a random sound
+    ///     effect for that player when they attack.
+    /// </summary>
+    void PlayAttackSound()
+    {
+        if (IsElePlayer)
+        {
+            PlayZapSound();
+        }
+        if (!IsElePlayer)
+        {
+            PlayWaterSound();
+        }
+    }
+    private void PlayZapSound()
+    {
+        int i = UnityEngine.Random.Range(1, 3);
+
+        switch (i)
+        {
+            case 1:
+                FindObjectOfType<AudioManager>().Play("zap1");
+                break;
+            case 2:
+                FindObjectOfType<AudioManager>().Play("zap2");
+                break;
+            case 3:
+                FindObjectOfType<AudioManager>().Play("zap3");
+                break;
+        }
+    }
+    private void PlayWaterSound()
+    {
+        int i = UnityEngine.Random.Range(1, 3);
+
+        switch (i)
+        {
+            case 1:
+                FindObjectOfType<AudioManager>().Play("water1");
+                break;
+            case 2:
+                FindObjectOfType<AudioManager>().Play("water2");
+                break;
+            case 3:
+                FindObjectOfType<AudioManager>().Play("water3");
+                break;
         }
     }
 
