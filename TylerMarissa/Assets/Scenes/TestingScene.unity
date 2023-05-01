@@ -1552,7 +1552,91 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 61a316cc65c2fd845ade9064fa37f50f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sounds: []
+  sounds:
+  - name: buttonOff
+    clip: {fileID: 8300000, guid: fe34e892b7093814893e609341295fc9, type: 3}
+    mixer: {fileID: 24300002, guid: b4170fb18c0f55144a24cde7b56b6aa7, type: 2}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+  - name: doorOpens
+    clip: {fileID: 8300000, guid: 558b59ba1b8d3c548804e5879604da74, type: 3}
+    mixer: {fileID: 24300002, guid: b4170fb18c0f55144a24cde7b56b6aa7, type: 2}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+  - name: enemyHit
+    clip: {fileID: 8300000, guid: 6abafd05ff34d5542a9a024e6daf4322, type: 3}
+    mixer: {fileID: 24300002, guid: b4170fb18c0f55144a24cde7b56b6aa7, type: 2}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+  - name: enemyDeath
+    clip: {fileID: 8300000, guid: 5a03aa6411250764988f2dd24ad5af10, type: 3}
+    mixer: {fileID: 24300002, guid: b4170fb18c0f55144a24cde7b56b6aa7, type: 2}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+  - name: enemyShooting
+    clip: {fileID: 8300000, guid: 5a03aa6411250764988f2dd24ad5af10, type: 3}
+    mixer: {fileID: 24300002, guid: b4170fb18c0f55144a24cde7b56b6aa7, type: 2}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+  - name: npcFreed
+    clip: {fileID: 8300000, guid: 5a03aa6411250764988f2dd24ad5af10, type: 3}
+    mixer: {fileID: 24300002, guid: b4170fb18c0f55144a24cde7b56b6aa7, type: 2}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+  - name: stunned
+    clip: {fileID: 8300000, guid: bf8ca9031e5311d4989b6c2dc2c7f60c, type: 3}
+    mixer: {fileID: 24300002, guid: b4170fb18c0f55144a24cde7b56b6aa7, type: 2}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+  - name: unstunned
+    clip: {fileID: 8300000, guid: 4bb7fdbdbfaab5746857aa88e48cf700, type: 3}
+    mixer: {fileID: 24300002, guid: b4170fb18c0f55144a24cde7b56b6aa7, type: 2}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+  - name: water1
+    clip: {fileID: 8300000, guid: ef2002e1b265a5845ba54de4e681cd74, type: 3}
+    mixer: {fileID: 24300002, guid: b4170fb18c0f55144a24cde7b56b6aa7, type: 2}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+  - name: water2
+    clip: {fileID: 8300000, guid: f9b9db77668f0cc4bb81228d4490fb2c, type: 3}
+    mixer: {fileID: 24300002, guid: b4170fb18c0f55144a24cde7b56b6aa7, type: 2}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+  - name: water3
+    clip: {fileID: 8300000, guid: fbb3e43008c1e7f46808faa01e1e443d, type: 3}
+    mixer: {fileID: 24300002, guid: b4170fb18c0f55144a24cde7b56b6aa7, type: 2}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+  - name: zap1
+    clip: {fileID: 8300000, guid: f3227572a043d6c499f8dbbee8d238ec, type: 3}
+    mixer: {fileID: 24300002, guid: b4170fb18c0f55144a24cde7b56b6aa7, type: 2}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+  - name: zap2
+    clip: {fileID: 8300000, guid: 86c9f13480a512a4d95de2d126fc3621, type: 3}
+    mixer: {fileID: 24300002, guid: b4170fb18c0f55144a24cde7b56b6aa7, type: 2}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+  - name: zap3
+    clip: {fileID: 8300000, guid: 294ccfda4f233f44b8d55c61745d8d3d, type: 3}
+    mixer: {fileID: 24300002, guid: b4170fb18c0f55144a24cde7b56b6aa7, type: 2}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
 --- !u!4 &368859424
 Transform:
   m_ObjectHideFlags: 0
