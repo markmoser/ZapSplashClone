@@ -38,6 +38,7 @@ public class DoorBehavior : MonoBehaviour
             playerScript = otherPlayer.GetComponent<PlayerBehavior>();
             playerScript.MovePlayer(targetLoc2);
             camScript.MoveCamera(20f * CamTargetLocX, 12f * CamTargetLocY);
+            FindObjectOfType<AudioManager>().Play("doorOpens");
         }
         
     }

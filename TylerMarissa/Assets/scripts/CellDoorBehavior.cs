@@ -23,11 +23,12 @@ public class CellDoorBehavior : MonoBehaviour
     {
         //gameObject.SetActive(false);
         anim.SetBool("DoorOpen", true);
-        if(gameObject.GetComponent<BoxCollider2D>().enabled)
+        if (gameObject.GetComponent<BoxCollider2D>().enabled)
         {
             gameObject.GetComponent<BoxCollider2D>().enabled = !gameObject.GetComponent<BoxCollider2D>().enabled;
             prisonerScript = NPCinCell.GetComponent<PrisonerBehavior>();
             prisonerScript.FreePrisoner();
+            FindObjectOfType<AudioManager>().Play("npcFreed");
         }
     }
 }

@@ -38,19 +38,22 @@ public class Enemy2Behavior : MonoBehaviour
     //Update function checks for the enemy's death state
     private void Update()
     {
-        if(HitByEle)
+        if (HitByEle)
         {
             sparks.SetActive(true);
+            FindObjectOfType<AudioManager>().Play("enemyHit");
         }
-        if(HitByWater)
+        if (HitByWater)
         {
             puddle.SetActive(true);
+            FindObjectOfType<AudioManager>().Play("enemyHit");
         }
 
         if (HitByEle && HitByWater)
         {
             Destroy(gameObject);
             gameManager.CountEnemy();
+            FindObjectOfType<AudioManager>().Play("enemyDeath");
         }
         PointTowardsPlayer(eyeScript.GetTargetPlayer());
     }
@@ -58,9 +61,10 @@ public class Enemy2Behavior : MonoBehaviour
         while (true) {
             RaycastHit2D hit = Physics2D.Raycast(transform.position, transform.TransformDirection(Vector2.up), detectionRadius, ~layerToIgnore);
             //print(hit.collider.name);
-            if (hit.collider.tag == "Player")
+            if (hit.collider.tag == "Player" && !hit.collider.gameObject.GetComponent<PlayerBehavior>().stunned)
             {
                 Instantiate(ammo, ammoSpawn.transform.position, transform.rotation);
+                FindObjectOfType<AudioManager>().Play("enemyShooting");
             }
             yield return new WaitForSeconds(fireRate);
         }

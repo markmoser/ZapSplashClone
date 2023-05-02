@@ -115,7 +115,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 84c92c3711914ea4aa52c8cead2ec19e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameController: {fileID: 0}
+  anim: {fileID: 2224952258915638202}
+  gameController: {fileID: 5124162139276383529, guid: a65f3adfba652f34398180184b59f494, type: 3}
 --- !u!95 &2224952258915638202
 Animator:
   serializedVersion: 4
