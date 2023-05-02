@@ -1,7 +1,7 @@
 /**********************************************************************************
 
 // File Name :         PlayerBehavior.cs
-// Author :            Marissa Moser and Tyler Bouchard
+// Author :            Marissa Moser
 // Creation Date :     April 13, 2023
 //
 // Brief Description : Script for the player. Sets up all the actions ans interaction
@@ -48,7 +48,7 @@ public class PlayerBehavior : MonoBehaviour
 
     [SerializeField] private Animator anim;
     [SerializeField] private ParticleSystem ps;
-    //[SerializeField] private GameObject pauseMenu;
+    [SerializeField] private Image pauseMenu;
 
     /// <summary>
     /// Sets bools to begin as false.
@@ -94,7 +94,7 @@ public class PlayerBehavior : MonoBehaviour
         attack.performed += ctx => Attack();
 
         //reset level
-        //pause.performed += ctx => OpenPauseMenu();
+        pause.performed += ctx => OpenPauseMenu();
 
         //rotates player
         aim.performed += ctx => rotation = ctx.ReadValue<Vector2>();
@@ -216,23 +216,18 @@ public class PlayerBehavior : MonoBehaviour
         }
     }
 
-    private void PlayWater()
-    {
-        throw new NotImplementedException();
-    }
-
     /// <summary>
     /// Opens the pause menu when player presses the start button
     /// </summary>
-    /*
     private void OpenPauseMenu()
     {
-        if(!pauseMenu.activeSelf)
+        if(!pauseMenu.enabled)
         {
-            pauseMenu.SetActive(true);
+            pauseMenu.enabled = !pauseMenu.enabled;
             //stop players and enemies 
         }
-    }*/
+
+    }
 
     /// <summary>
     /// Sets bools for the Interact action. 
@@ -276,9 +271,9 @@ public class PlayerBehavior : MonoBehaviour
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.tag == "Bullet") 
+        if (collision.gameObject.tag == "Bullet")
         {
-            if(!stunned)
+            if (!stunned)
             {
                 FindObjectOfType<AudioManager>().Play("stunned");
             }
@@ -286,7 +281,7 @@ public class PlayerBehavior : MonoBehaviour
         }
         if (collision.gameObject.tag == "Player")
         {
-            if(stunned)
+            if (stunned)
             {
                 FindObjectOfType<AudioManager>().Play("unstunned");
             }
@@ -359,4 +354,3 @@ public class PlayerBehavior : MonoBehaviour
         inputMap.Disable();
     }
 }
-

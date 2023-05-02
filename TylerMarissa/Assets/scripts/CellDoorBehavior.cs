@@ -19,19 +19,16 @@ public class CellDoorBehavior : MonoBehaviour
 
     private PrisonerBehavior prisonerScript;
 
-    /// <summary>
-    /// Function to teleport the players and camera to the next room
-    /// </summary>
     public void OpenDoor() 
     {
         //gameObject.SetActive(false);
         anim.SetBool("DoorOpen", true);
-        FindObjectOfType<AudioManager>().Play("npcFreed");
         if (gameObject.GetComponent<BoxCollider2D>().enabled)
         {
             gameObject.GetComponent<BoxCollider2D>().enabled = !gameObject.GetComponent<BoxCollider2D>().enabled;
             prisonerScript = NPCinCell.GetComponent<PrisonerBehavior>();
             prisonerScript.FreePrisoner();
+            FindObjectOfType<AudioManager>().Play("npcFreed");
         }
     }
 }

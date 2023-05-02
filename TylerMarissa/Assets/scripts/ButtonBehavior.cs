@@ -17,24 +17,17 @@ public class ButtonBehavior : MonoBehaviour
 {
     private bool toggled = false;
 
-    [SerializeField] private GameObject gameController;
-    private GameManager gameManager;
     [SerializeField] private Animator anim;
+    [SerializeField] private GameObject gameController;
 
-    //[SerializeField] private Animator anim ;
-
-    private void Start()
-    {
-        gameManager = gameController.GetComponent<GameManager>();
-    }
 
     public void PressButton()
     {
         if (!toggled) 
         {
-            gameManager.CountButton();
-            FindObjectOfType<AudioManager>().Play("buttonOff");
+            gameController.GetComponent<GameManager>().CountButton();
             anim.SetBool("isToggled", true);
+            FindObjectOfType<AudioManager>().Play("buttonOff");
         }
         toggled = true;
     }
