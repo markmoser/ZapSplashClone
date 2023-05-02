@@ -42,8 +42,8 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         PlayerInput.Instantiate(ElePlayer, 0, null, pairWithDevice: Gamepad.all[0]);        //spawns ele player
-        PlayerInput.Instantiate(WaterPlayer, 1, null, pairWithDevice: Gamepad.all[1]);      //Use this line to use two controllers with two players
-        //PlayerInput.Instantiate(WaterPlayer, 1, null, pairWithDevice: Gamepad.all[0]);      //Use this line with the first to spawn two players under the same controller
+        //PlayerInput.Instantiate(WaterPlayer, 1, null, pairWithDevice: Gamepad.all[1]);      //Use this line to use two controllers with two players
+        PlayerInput.Instantiate(WaterPlayer, 1, null, pairWithDevice: Gamepad.all[0]);      //Use this line with the first to spawn two players under the same controller
 
         ExitDoor = GameObject.Find("ExitDoor");
         exitDoorScript = ExitDoor.GetComponent<ExitDoorBehavior>();

@@ -212,6 +212,7 @@ public class PlayerBehavior : MonoBehaviour
         if(!stunned)
         {
             Instantiate(playerAmmo, ammoSpawn.transform.position, transform.rotation);
+            PlayAttackSound();
         }
     }
 
