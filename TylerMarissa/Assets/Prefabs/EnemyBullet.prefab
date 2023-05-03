@@ -102,7 +102,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ammoSpeed: 15
-  ammoLifeTime: 3
   isElePlayer: 1
 --- !u!70 &3357683460193902732
 CapsuleCollider2D:

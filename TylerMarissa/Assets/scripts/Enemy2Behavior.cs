@@ -18,7 +18,6 @@ public class Enemy2Behavior : MonoBehaviour
     [SerializeField] private GameObject puddle;
     [SerializeField] private GameObject sparks;
 
-
     [SerializeField] private float fireRate = 0.5f;
     [SerializeField] private float turnSpeed = 10f;
     [SerializeField] public float detectionRadius = 100f;
@@ -42,11 +41,13 @@ public class Enemy2Behavior : MonoBehaviour
         {
             sparks.SetActive(true);
             FindObjectOfType<AudioManager>().Play("enemyHit");
+            fireRate = 0.1f;
         }
         if (HitByWater)
         {
             puddle.SetActive(true);
             FindObjectOfType<AudioManager>().Play("enemyHit");
+            turnSpeed = 20f;
         }
 
         if (HitByEle && HitByWater)
