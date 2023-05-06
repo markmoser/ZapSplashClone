@@ -24,7 +24,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3871549360231501959}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.3, z: 0}
+  m_LocalPosition: {x: 0, y: -0.06, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -181,11 +181,11 @@ MonoBehaviour:
   inCellDoorRange: 0
   stunned: 0
   playerAmmo: {fileID: 2336550799899013434, guid: b6a0a77e03b12fa4285ee806d4f06635, type: 3}
-  ammoSpeed: 0
   ammoSpawn: {fileID: 3871549360231501959}
   IsElePlayer: 1
   anim: {fileID: 733004896101543540}
   ps: {fileID: -7731144284539987061}
+  pauseMenu: {fileID: 0}
 --- !u!114 &7168732153780992965
 MonoBehaviour:
   m_ObjectHideFlags: 0

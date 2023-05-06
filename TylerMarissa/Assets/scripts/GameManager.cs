@@ -58,13 +58,13 @@ public class GameManager : MonoBehaviour
         buttonsPressedSlider.value = buttonsPressed;
         npcsFreedSlider.value = prisonersFreed;
 
-        if (prisonersFreed >= 8 && buttonsPressed >= 4 && EnemiesKilled >= 12)
+        if (prisonersFreed >= 8 && buttonsPressed >= 5 && EnemiesKilled >= 42)
         {
             exitDoorScript.OpenDoor();
         }
         PlayerBehavior elePlayerScript = GameObject.Find("ElectricPlayer(Clone)").GetComponent<PlayerBehavior>();
         PlayerBehavior waterPlayerScript = GameObject.Find("WaterPlayer(Clone)").GetComponent<PlayerBehavior>();
-        print(elePlayerScript.stunned + " " + waterPlayerScript.stunned);
+        //print(elePlayerScript.stunned + " " + waterPlayerScript.stunned);
         if (elePlayerScript.stunned && waterPlayerScript.stunned) {
             SceneManager.LoadScene(3);
         }
