@@ -138,7 +138,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b47b8240d811c964ca09449a1880fc46, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ammoSpeed: 10
+  ammoSpeed: 7
   isElePlayer: 0
 --- !u!198 &-8147311928134044525
 ParticleSystem:

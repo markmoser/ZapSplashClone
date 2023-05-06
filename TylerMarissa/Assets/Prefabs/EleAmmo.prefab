@@ -122,7 +122,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b47b8240d811c964ca09449a1880fc46, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ammoSpeed: 20
+  ammoSpeed: 15
   isElePlayer: 1
 --- !u!70 &2139828874440925089
 CapsuleCollider2D:

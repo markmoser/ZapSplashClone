@@ -184,6 +184,7 @@ MonoBehaviour:
   IsElePlayer: 0
   anim: {fileID: 5985238313781061077}
   ps: {fileID: -3897729056296188539}
+  pauseMenu: {fileID: 0}
 --- !u!95 &5985238313781061077
 Animator:
   serializedVersion: 4
@@ -5023,7 +5024,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6275426720333543594}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.3, z: 0}
+  m_LocalPosition: {x: 0, y: 0.176, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

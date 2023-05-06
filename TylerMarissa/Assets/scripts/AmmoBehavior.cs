@@ -17,6 +17,7 @@ public class AmmoBehavior : MonoBehaviour
 {
     [SerializeField] private float ammoSpeed;
     [SerializeField] private bool isElePlayer = true;
+    [SerializeField] private bool isEnemy = false;
 
     /// <summary>
     /// Update functoin moves the player's ammo and calls the destroy function 
@@ -40,6 +41,16 @@ public class AmmoBehavior : MonoBehaviour
         {
             collision.gameObject.GetComponent<Enemy2Behavior>().HitByWater = true;
         }
-        Destroy(gameObject);
+        if (isEnemy) {
+            Destroy(gameObject);
+        }
+        if (isElePlayer && !(collision.gameObject.name == "ElectricPlayer(Clone)")) {
+            Destroy(gameObject);
+        }
+        if (!isElePlayer && !(collision.gameObject.name == "WaterPlayer(Clone)"))
+        {
+            Destroy(gameObject);
+        }
+        
     }
 }
