@@ -41,13 +41,13 @@ public class Enemy2Behavior : MonoBehaviour
         {
             sparks.SetActive(true);
             FindObjectOfType<AudioManager>().Play("enemyHit");
-            fireRate = 0.1f;
+            fireRate = 1.5f;
         }
         if (HitByWater)
         {
             puddle.SetActive(true);
             FindObjectOfType<AudioManager>().Play("enemyHit");
-            turnSpeed = 20f;
+            turnSpeed = 2.5f;
         }
 
         if (HitByEle && HitByWater)
