@@ -139,7 +139,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ammoSpeed: 10
-  ammoLifeTime: 3
   isElePlayer: 0
 --- !u!198 &-8147311928134044525
 ParticleSystem:

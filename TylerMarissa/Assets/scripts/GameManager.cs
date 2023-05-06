@@ -64,7 +64,7 @@ public class GameManager : MonoBehaviour
         }
         PlayerBehavior elePlayerScript = GameObject.Find("ElectricPlayer(Clone)").GetComponent<PlayerBehavior>();
         PlayerBehavior waterPlayerScript = GameObject.Find("WaterPlayer(Clone)").GetComponent<PlayerBehavior>();
-        print(elePlayerScript.stunned + " " + waterPlayerScript.stunned);
+        //print(elePlayerScript.stunned + " " + waterPlayerScript.stunned);
         if (elePlayerScript.stunned && waterPlayerScript.stunned) {
             SceneManager.LoadScene(3);
         }
