@@ -18,6 +18,9 @@ using UnityEngine.EventSystems;
 public class MainMenuBehavior : MonoBehaviour
 {
     public GameObject PlayButton;
+    public GameObject ControlButton;
+    public GameObject X;
+    public GameObject ControlScreen;
 
     /// <summary>
     /// Begins the game
@@ -26,6 +29,29 @@ public class MainMenuBehavior : MonoBehaviour
     {
         SceneManager.LoadScene(1);
         Debug.Log("Start Level");
+    }
+
+    public void ReturnToMainMenu()
+    {
+        SceneManager.LoadScene(0);
+    }
+
+    /// <summary>
+    /// Enables the controls image
+    /// </summary>
+    public void ControlsOn()
+    {
+        ControlScreen.SetActive(true);
+        EventSystem.current.SetSelectedGameObject(X);
+    }
+
+    /// <summary>
+    /// Enables the controls image
+    /// </summary>
+    public void ControlsOff()
+    {
+        ControlScreen.SetActive(false);
+        EventSystem.current.SetSelectedGameObject(ControlButton);
     }
 
     /// <summary>

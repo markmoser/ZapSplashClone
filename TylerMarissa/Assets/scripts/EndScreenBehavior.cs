@@ -38,6 +38,14 @@ public class EndScreenBehavior : MonoBehaviour
     }
 
     /// <summary>
+    /// returns to main menu
+    /// </summary>
+    public void ReturnToMainMenu()
+    {
+        SceneManager.LoadScene(0);
+    }
+
+    /// <summary>
     /// Start function is used to set the buttoon that will be selected first.
     /// </summary>
     public void Start()
